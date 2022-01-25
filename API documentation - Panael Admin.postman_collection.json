@@ -10,174 +10,7 @@
 			"item": [
 				{
 					"name": "session",
-					"item": [
-						{
-							"name": "General information.",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{TOKEN}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/api/session/:id",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"api",
-										"session",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "-43192755",
-											"description": "(Required) Client id"
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "Successful operation.",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/api/session/:id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"api",
-												"session",
-												":id"
-											],
-											"variable": [
-												{
-													"key": "protocol",
-													"value": "{{protocol}}",
-													"description": " (This can only be one of http,https)"
-												},
-												{
-													"key": "environment",
-													"value": "{{environment}}"
-												},
-												{
-													"key": "id",
-													"value": "-43192755",
-													"description": "(Required) Client id"
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "text",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "text/plain"
-										}
-									],
-									"cookie": [],
-									"body": ""
-								}
-							]
-						},
-						{
-							"name": "Kill user session.",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{TOKEN}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/api/session/kill/:sessionId",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"api",
-										"session",
-										"kill",
-										":sessionId"
-									],
-									"variable": [
-										{
-											"key": "sessionId",
-											"value": "aute amet",
-											"description": "(Required) Session id"
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "Successful operation.",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/api/session/kill/:sessionId",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"api",
-												"session",
-												"kill",
-												":sessionId"
-											],
-											"variable": [
-												{
-													"key": "protocol",
-													"value": "{{protocol}}",
-													"description": " (This can only be one of http,https)"
-												},
-												{
-													"key": "environment",
-													"value": "{{environment}}"
-												},
-												{
-													"key": "sessionId",
-													"value": "aute amet",
-													"description": "(Required) Session id"
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "text",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "text/plain"
-										}
-									],
-									"cookie": [],
-									"body": ""
-								}
-							]
-						}
-					]
+					"item": []
 				},
 				{
 					"name": "dictionary",
@@ -392,7 +225,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/api/dictionary/stream-standard/:softId",
+									"raw": "{{baseUrl}}/api/dictionary/stream-standard/{{Soft_Id}}",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -400,14 +233,7 @@
 										"api",
 										"dictionary",
 										"stream-standard",
-										":softId"
-									],
-									"variable": [
-										{
-											"key": "softId",
-											"value": "aute amet",
-											"description": "(Required) softId"
-										}
+										"{{Soft_Id}}"
 									]
 								}
 							},
@@ -745,25 +571,14 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/api/dictionary/channels-urls-ecryption-type",
+									"raw": "{{baseUrl}}/api/dictionary/channels-urls-encryption-type",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"api",
 										"dictionary",
-										"channels-urls-ecryption-type"
-									],
-									"variable": [
-										{
-											"key": "protocol",
-											"value": "{{protocol}}",
-											"description": " (This can only be one of http,https)"
-										},
-										{
-											"key": "environment",
-											"value": "{{environment}}"
-										}
+										"channels-urls-encryption-type"
 									]
 								}
 							},
@@ -1442,18 +1257,42 @@
 					"item": [
 						{
 							"name": "Returns client action log.",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200, response is json\", function () {",
+											"    pm.response.to.have.status(200);",
+											"    pm.response.to.be.json;",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/api/client/:id/log?perPage=5&page=1&sort=dt",
+									"raw": "{{baseUrl}}/api/client/{{Client_id}}/log?perPage=5&page=1&sort=dt",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"api",
 										"client",
-										":id",
+										"{{Client_id}}",
 										"log"
 									],
 									"query": [
@@ -1471,22 +1310,6 @@
 											"key": "sort",
 											"value": "dt",
 											"description": "Field by that need to be sorted"
-										}
-									],
-									"variable": [
-										{
-											"key": "protocol",
-											"value": "{{protocol}}",
-											"description": " (This can only be one of http,https)"
-										},
-										{
-											"key": "environment",
-											"value": "{{environment}}"
-										},
-										{
-											"key": "id",
-											"value": "-43192755",
-											"description": "(Required) Client id"
 										}
 									]
 								}
@@ -1676,13 +1499,37 @@
 						},
 						{
 							"name": "Returns client authorization  log.",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200, response is json\", function () {",
+											"    pm.response.to.have.status(200);",
+											"    pm.response.to.be.json;",
+											"    // console.log('pm.response: ', pm.response.json());",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"auth": {
 									"type": "bearer",
 									"bearer": [
 										{
 											"key": "token",
-											"value": "<Bearer Token>",
+											"value": "{{TOKEN}}",
 											"type": "string"
 										}
 									]
@@ -1690,14 +1537,14 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/api/client/:id/authorization-log?perPage=5&page=1&sort=-reason",
+									"raw": "{{baseUrl}}/api/client/{{Client_id}}/authorization-log?perPage=5&page=1&sort=-reason",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"api",
 										"client",
-										":id",
+										"{{Client_id}}",
 										"authorization-log"
 									],
 									"query": [
@@ -1715,22 +1562,6 @@
 											"key": "sort",
 											"value": "-reason",
 											"description": "Field by that need to be sorted"
-										}
-									],
-									"variable": [
-										{
-											"key": "protocol",
-											"value": "{{protocol}}",
-											"description": " (This can only be one of http,https)"
-										},
-										{
-											"key": "environment",
-											"value": "{{environment}}"
-										},
-										{
-											"key": "id",
-											"value": "-43192755",
-											"description": "(Required) Client id"
 										}
 									]
 								}
@@ -1938,13 +1769,27 @@
 						},
 						{
 							"name": "Returns client switching channel log.",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200, response is json\", function () {",
+											"    pm.response.to.have.status(200);",
+											"    pm.response.to.be.json;",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"auth": {
 									"type": "bearer",
 									"bearer": [
 										{
 											"key": "token",
-											"value": "<Bearer Token>",
+											"value": "{{TOKEN}}",
 											"type": "string"
 										}
 									]
@@ -1952,14 +1797,14 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/api/client/:id/channel-switching?perPage=5&page=1&sort=-stream_standard",
+									"raw": "{{baseUrl}}/api/client/{{Client_id}}/channel-switching?perPage=5&page=1",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"api",
 										"client",
-										":id",
+										"{{Client_id}}",
 										"channel-switching"
 									],
 									"query": [
@@ -1976,23 +1821,8 @@
 										{
 											"key": "sort",
 											"value": "-stream_standard",
-											"description": "Field by that need to be sorted"
-										}
-									],
-									"variable": [
-										{
-											"key": "protocol",
-											"value": "{{protocol}}",
-											"description": " (This can only be one of http,https)"
-										},
-										{
-											"key": "environment",
-											"value": "{{environment}}"
-										},
-										{
-											"key": "id",
-											"value": "-43192755",
-											"description": "(Required) Client id"
+											"description": "Field by that need to be sorted",
+											"disabled": true
 										}
 									]
 								}
@@ -2200,13 +2030,30 @@
 						},
 						{
 							"name": "Returns client devices.",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200, response is json\", function () {",
+											"    pm.response.to.have.status(200);",
+											"    pm.response.to.be.json;",
+											"    var jsonData = pm.response.json();",
+											"    pm.globals.set(\"Soft_Id\", jsonData.items[0].softid);",
+											"    pm.globals.set(\"serial_device\", jsonData.items[1].serial);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"auth": {
 									"type": "bearer",
 									"bearer": [
 										{
 											"key": "token",
-											"value": "<Bearer Token>",
+											"value": "{{TOKEN}}",
 											"type": "string"
 										}
 									]
@@ -2214,14 +2061,14 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/api/client/:id/devices?perPage=5&page=1&sort=-last_access",
+									"raw": "{{baseUrl}}/api/client/{{Client_id}}/devices?perPage=5&page=1&sort=-last_access",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"api",
 										"client",
-										":id",
+										"{{Client_id}}",
 										"devices"
 									],
 									"query": [
@@ -2239,22 +2086,6 @@
 											"key": "sort",
 											"value": "-last_access",
 											"description": "Field by that need to be sorted"
-										}
-									],
-									"variable": [
-										{
-											"key": "protocol",
-											"value": "{{protocol}}",
-											"description": " (This can only be one of http,https)"
-										},
-										{
-											"key": "environment",
-											"value": "{{environment}}"
-										},
-										{
-											"key": "id",
-											"value": "-43192755",
-											"description": "(Required) Client id"
 										}
 									]
 								}
@@ -2462,13 +2293,27 @@
 						},
 						{
 							"name": "Returns device config.",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200, response is json\", function () {",
+											"    pm.response.to.have.status(200);",
+											"    pm.response.to.be.json;",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"auth": {
 									"type": "bearer",
 									"bearer": [
 										{
 											"key": "token",
-											"value": "<Bearer Token>",
+											"value": "{{TOKEN}}",
 											"type": "string"
 										}
 									]
@@ -2476,43 +2321,17 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/api/client/:id/device/:serial/:softId",
+									"raw": "{{baseUrl}}/api/client/{{Client_id}}/device/{{serial_device}}/{{Soft_Id}}",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"api",
 										"client",
-										":id",
+										"{{Client_id}}",
 										"device",
-										":serial",
-										":softId"
-									],
-									"variable": [
-										{
-											"key": "protocol",
-											"value": "{{protocol}}",
-											"description": " (This can only be one of http,https)"
-										},
-										{
-											"key": "environment",
-											"value": "{{environment}}"
-										},
-										{
-											"key": "id",
-											"value": "-43192755",
-											"description": "(Required) Client id"
-										},
-										{
-											"key": "serial",
-											"value": "-43192755",
-											"description": "(Required) serial device"
-										},
-										{
-											"key": "softId",
-											"value": "aute amet",
-											"description": "(Required) SoftId"
-										}
+										"{{serial_device}}",
+										"{{Soft_Id}}"
 									]
 								}
 							},
@@ -2721,6 +2540,7 @@
 											"pm.test(\"Status code is 200, response is json\", function () {",
 											"    pm.response.to.have.status(200);",
 											"    pm.response.to.be.json;",
+											"    // console.log('client_id = ', responseJSON.id);",
 											"});"
 										],
 										"type": "text/javascript"
@@ -2741,21 +2561,21 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/api/client/:id/info",
+									"raw": "{{baseUrl}}/api/client/{{Client_id}}/info",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"api",
 										"client",
-										":id",
+										"{{Client_id}}",
 										"info"
 									],
-									"variable": [
+									"query": [
 										{
-											"key": "id",
-											"value": "-43192755",
-											"description": "(Required) Client id"
+											"key": "",
+											"value": null,
+											"disabled": true
 										}
 									]
 								}
@@ -2918,6 +2738,444 @@
 									"body": "{\n \"code\": 403,\n \"message\": \"Access Denied.\"\n}"
 								}
 							]
+						},
+						{
+							"name": "Returns list Clients.",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200, response is json\", function () {",
+											"    pm.response.to.have.status(200);",
+											"    pm.response.to.be.json;",
+											"    var jsonData = pm.response.json();",
+											"    pm.globals.set(\"Client_id\", jsonData.items[0].id);",
+											"    // console.log('Client_id = ', jsonData.items[0].id);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/clients?perPage=5&page=1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"clients"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "aute amet",
+											"description": "Values that need to be considered for search",
+											"disabled": true
+										},
+										{
+											"key": "sort",
+											"value": "-id_packet",
+											"description": "Field by that need to be sorted",
+											"disabled": true
+										},
+										{
+											"key": "perPage",
+											"value": "5",
+											"description": "(Required) Count items in page"
+										},
+										{
+											"key": "page",
+											"value": "1",
+											"description": "(Required) Numeric page"
+										}
+									],
+									"variable": [
+										{
+											"key": "protocol",
+											"value": "{{protocol}}",
+											"description": " (This can only be one of http,https)"
+										},
+										{
+											"key": "environment",
+											"value": "{{environment}}"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Successful operation.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/clients?search=aute amet&sort=-id_packet&perPage=5&page=1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"clients"
+											],
+											"query": [
+												{
+													"key": "search",
+													"value": "aute amet"
+												},
+												{
+													"key": "sort",
+													"value": "-id_packet"
+												},
+												{
+													"key": "perPage",
+													"value": "5"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												}
+											],
+											"variable": [
+												{
+													"key": "protocol",
+													"value": "{{protocol}}",
+													"description": " (This can only be one of http,https)"
+												},
+												{
+													"key": "environment",
+													"value": "{{environment}}"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/clients?search=aute amet&sort=-id_packet&perPage=5&page=1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"clients"
+											],
+											"query": [
+												{
+													"key": "search",
+													"value": "aute amet"
+												},
+												{
+													"key": "sort",
+													"value": "-id_packet"
+												},
+												{
+													"key": "perPage",
+													"value": "5"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												}
+											],
+											"variable": [
+												{
+													"key": "protocol",
+													"value": "{{protocol}}",
+													"description": " (This can only be one of http,https)"
+												},
+												{
+													"key": "environment",
+													"value": "{{environment}}"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"code\": 401,\n \"message\": \"Expired JWT Token\"\n}"
+								},
+								{
+									"name": "Access Denied",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: bearer",
+												"key": "Authorization",
+												"value": "Bearer <token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/clients?search=aute amet&sort=-id_packet&perPage=5&page=1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"clients"
+											],
+											"query": [
+												{
+													"key": "search",
+													"value": "aute amet"
+												},
+												{
+													"key": "sort",
+													"value": "-id_packet"
+												},
+												{
+													"key": "perPage",
+													"value": "5"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												}
+											],
+											"variable": [
+												{
+													"key": "protocol",
+													"value": "{{protocol}}",
+													"description": " (This can only be one of http,https)"
+												},
+												{
+													"key": "environment",
+													"value": "{{environment}}"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"code\": 403,\n \"message\": \"Access Denied.\"\n}"
+								}
+							]
+						},
+						{
+							"name": "General information.",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200, response is json\", function () {",
+											"    pm.response.to.have.status(200);",
+											"    pm.response.to.be.json;",
+											"    var jsonData = pm.response.json();",
+											"    pm.globals.set(\"Session_id\", Object.keys(jsonData).pop());",
+											"    });"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/session/{{Client_id}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"session",
+										"{{Client_id}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Successful operation.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/session/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"session",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "protocol",
+													"value": "{{protocol}}",
+													"description": " (This can only be one of http,https)"
+												},
+												{
+													"key": "environment",
+													"value": "{{environment}}"
+												},
+												{
+													"key": "id",
+													"value": "-43192755",
+													"description": "(Required) Client id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Kill user session.",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/session/kill/{{Session_id}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"session",
+										"kill",
+										"{{Session_id}}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Successful operation.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/session/kill/:sessionId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"session",
+												"kill",
+												":sessionId"
+											],
+											"variable": [
+												{
+													"key": "protocol",
+													"value": "{{protocol}}",
+													"description": " (This can only be one of http,https)"
+												},
+												{
+													"key": "environment",
+													"value": "{{environment}}"
+												},
+												{
+													"key": "sessionId",
+													"value": "aute amet",
+													"description": "(Required) Session id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
 						}
 					]
 				},
@@ -2929,13 +3187,27 @@
 							"item": [
 								{
 									"name": "Delete user by ID.",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200, response is json\", function () {",
+													"    pm.response.to.have.status(200);",
+													"    pm.response.to.be.json;",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"request": {
 										"auth": {
 											"type": "bearer",
 											"bearer": [
 												{
 													"key": "token",
-													"value": "<Bearer Token>",
+													"value": "{{TOKEN}}",
 													"type": "string"
 												}
 											]
@@ -2954,17 +3226,8 @@
 											],
 											"variable": [
 												{
-													"key": "protocol",
-													"value": "{{protocol}}",
-													"description": " (This can only be one of http,https)"
-												},
-												{
-													"key": "environment",
-													"value": "{{environment}}"
-												},
-												{
 													"key": "id",
-													"value": "aute amet",
+													"value": "2",
 													"description": "(Required) Id User"
 												}
 											]
@@ -3736,10 +3999,15 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"pm.test(\"Status code is 200, response is json\", function () {",
-											"    pm.response.to.have.status(200);",
+											"pm.test(\"Status code is 201, response is json\", function () {",
+											"    pm.response.to.have.status(201);",
 											"    pm.response.to.be.json;",
-											"});"
+											"",
+											"});",
+											"",
+											"postman.setNextRequest('Delete user by ID.');",
+											"",
+											""
 										],
 										"type": "text/javascript"
 									}
@@ -3765,7 +4033,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"first_name\": \"amet et\",\n    \"last_name\": \"deserunt mollit\",\n    \"password\": \"elit\",\n    \"email\": \"sint et\",\n    \"roles\": [\n        \"ROLE_ADMIN\",\n        \"ROLE_ADMIN\"\n    ]\n}",
+									"raw": "{\n    \"first_name\": \"maykl03\",\n    \"last_name\": \"born-04\",\n    \"password\": \"1111\",\n    \"email\": \"maykl-06@uuu.by\",\n    \"roles\": [\n        \"ROLE_ADMIN\"\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -5149,7 +5417,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/api/channels?sort=name&search=aute amet&perPage=5&page=1&showDeleted=0",
+									"raw": "{{baseUrl}}/api/channels?sort=name&perPage=5&page=1&showDeleted=0",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -5166,7 +5434,8 @@
 										{
 											"key": "search",
 											"value": "aute amet",
-											"description": "Values that need to be considered for search"
+											"description": "Values that need to be considered for search",
+											"disabled": true
 										},
 										{
 											"key": "perPage",
@@ -5470,6 +5739,20 @@
 						},
 						{
 							"name": "Returns list Groups of Channels.",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200, response is json\", function () {",
+											"    pm.response.to.have.status(200);",
+											"    pm.response.to.be.json;",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -10072,13 +10355,27 @@
 							"item": [
 								{
 									"name": "Return Packet data.",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200, response is json\", function () {",
+													"    pm.response.to.have.status(200);",
+													"    pm.response.to.be.json;",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"request": {
 										"auth": {
 											"type": "bearer",
 											"bearer": [
 												{
 													"key": "token",
-													"value": "<Bearer Token>",
+													"value": "{{TOKEN}}",
 													"type": "string"
 												}
 											]
@@ -10097,17 +10394,8 @@
 											],
 											"variable": [
 												{
-													"key": "protocol",
-													"value": "{{protocol}}",
-													"description": " (This can only be one of http,https)"
-												},
-												{
-													"key": "environment",
-													"value": "{{environment}}"
-												},
-												{
 													"key": "id",
-													"value": "-43192755",
+													"value": "265",
 													"description": "(Required) Id Packet"
 												}
 											]
@@ -10322,13 +10610,27 @@
 								},
 								{
 									"name": "Update Packet data.",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200, response is json\", function () {",
+													"    pm.response.to.have.status(200);",
+													"    pm.response.to.be.json;",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"request": {
 										"auth": {
 											"type": "bearer",
 											"bearer": [
 												{
 													"key": "token",
-													"value": "<Bearer Token>",
+													"value": "{{TOKEN}}",
 													"type": "string"
 												}
 											]
@@ -10361,17 +10663,8 @@
 											],
 											"variable": [
 												{
-													"key": "protocol",
-													"value": "{{protocol}}",
-													"description": " (This can only be one of http,https)"
-												},
-												{
-													"key": "environment",
-													"value": "{{environment}}"
-												},
-												{
 													"key": "id",
-													"value": "-43192755",
+													"value": "265",
 													"description": "(Required) Id Packet"
 												}
 											]
@@ -10624,13 +10917,27 @@
 						},
 						{
 							"name": "Create Packet.",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200, response is json\", function () {",
+											"    pm.response.to.have.status(200);",
+											"    pm.response.to.be.json;",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"auth": {
 									"type": "bearer",
 									"bearer": [
 										{
 											"key": "token",
-											"value": "<Bearer Token>",
+											"value": "{{TOKEN}}",
 											"type": "string"
 										}
 									]
@@ -13148,7 +13455,7 @@
 					]
 				},
 				{
-					"name": "Returns list Clients.",
+					"name": "Returns users.",
 					"event": [
 						{
 							"listen": "test",
@@ -13177,258 +13484,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/api/clients?search=aute amet&sort=-id_packet&perPage=5&page=1",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"clients"
-							],
-							"query": [
-								{
-									"key": "search",
-									"value": "aute amet",
-									"description": "Values that need to be considered for search"
-								},
-								{
-									"key": "sort",
-									"value": "-id_packet",
-									"description": "Field by that need to be sorted"
-								},
-								{
-									"key": "perPage",
-									"value": "5",
-									"description": "(Required) Count items in page"
-								},
-								{
-									"key": "page",
-									"value": "1",
-									"description": "(Required) Numeric page"
-								}
-							],
-							"variable": [
-								{
-									"key": "protocol",
-									"value": "{{protocol}}",
-									"description": " (This can only be one of http,https)"
-								},
-								{
-									"key": "environment",
-									"value": "{{environment}}"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Successful operation.",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"description": "Added as a part of security scheme: bearer",
-										"key": "Authorization",
-										"value": "Bearer <token>"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/api/clients?search=aute amet&sort=-id_packet&perPage=5&page=1",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"api",
-										"clients"
-									],
-									"query": [
-										{
-											"key": "search",
-											"value": "aute amet"
-										},
-										{
-											"key": "sort",
-											"value": "-id_packet"
-										},
-										{
-											"key": "perPage",
-											"value": "5"
-										},
-										{
-											"key": "page",
-											"value": "1"
-										}
-									],
-									"variable": [
-										{
-											"key": "protocol",
-											"value": "{{protocol}}",
-											"description": " (This can only be one of http,https)"
-										},
-										{
-											"key": "environment",
-											"value": "{{environment}}"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "Unauthorized",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"description": "Added as a part of security scheme: bearer",
-										"key": "Authorization",
-										"value": "Bearer <token>"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/api/clients?search=aute amet&sort=-id_packet&perPage=5&page=1",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"api",
-										"clients"
-									],
-									"query": [
-										{
-											"key": "search",
-											"value": "aute amet"
-										},
-										{
-											"key": "sort",
-											"value": "-id_packet"
-										},
-										{
-											"key": "perPage",
-											"value": "5"
-										},
-										{
-											"key": "page",
-											"value": "1"
-										}
-									],
-									"variable": [
-										{
-											"key": "protocol",
-											"value": "{{protocol}}",
-											"description": " (This can only be one of http,https)"
-										},
-										{
-											"key": "environment",
-											"value": "{{environment}}"
-										}
-									]
-								}
-							},
-							"status": "Unauthorized",
-							"code": 401,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								}
-							],
-							"cookie": [],
-							"body": "{\n \"code\": 401,\n \"message\": \"Expired JWT Token\"\n}"
-						},
-						{
-							"name": "Access Denied",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"description": "Added as a part of security scheme: bearer",
-										"key": "Authorization",
-										"value": "Bearer <token>"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/api/clients?search=aute amet&sort=-id_packet&perPage=5&page=1",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"api",
-										"clients"
-									],
-									"query": [
-										{
-											"key": "search",
-											"value": "aute amet"
-										},
-										{
-											"key": "sort",
-											"value": "-id_packet"
-										},
-										{
-											"key": "perPage",
-											"value": "5"
-										},
-										{
-											"key": "page",
-											"value": "1"
-										}
-									],
-									"variable": [
-										{
-											"key": "protocol",
-											"value": "{{protocol}}",
-											"description": " (This can only be one of http,https)"
-										},
-										{
-											"key": "environment",
-											"value": "{{environment}}"
-										}
-									]
-								}
-							},
-							"status": "Forbidden",
-							"code": 403,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								}
-							],
-							"cookie": [],
-							"body": "{\n \"code\": 403,\n \"message\": \"Access Denied.\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Returns users.",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "<Bearer Token>",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/api/users?search=aute amet&perPage=5&page=1",
+							"raw": "{{baseUrl}}/api/users?perPage=5&page=1",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -13440,7 +13496,8 @@
 								{
 									"key": "search",
 									"value": "aute amet",
-									"description": "Values that need to be considered for search"
+									"description": "Values that need to be considered for search",
+									"disabled": true
 								},
 								{
 									"key": "perPage",
@@ -14006,7 +14063,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/api/products?sort=id&search=aute amet&perPage=5&page=1",
+							"raw": "{{baseUrl}}/api/products?perPage=5&page=1",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -14018,12 +14075,14 @@
 								{
 									"key": "sort",
 									"value": "id",
-									"description": "Field by that need to be sorted"
+									"description": "Field by that need to be sorted",
+									"disabled": true
 								},
 								{
 									"key": "search",
 									"value": "aute amet",
-									"description": "Values that need to be considered for search"
+									"description": "Values that need to be considered for search",
+									"disabled": true
 								},
 								{
 									"key": "perPage",
@@ -14334,7 +14393,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/api/devices?sort=softid&search=aute amet&perPage=5&page=1",
+							"raw": "{{baseUrl}}/api/devices?perPage=5&page=1",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -14346,12 +14405,14 @@
 								{
 									"key": "sort",
 									"value": "softid",
-									"description": "Field by that need to be sorted"
+									"description": "Field by that need to be sorted",
+									"disabled": true
 								},
 								{
 									"key": "search",
 									"value": "aute amet",
-									"description": "Values that need to be considered for search"
+									"description": "Values that need to be considered for search",
+									"disabled": true
 								},
 								{
 									"key": "perPage",
