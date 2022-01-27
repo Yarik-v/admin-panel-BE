@@ -1256,248 +1256,6 @@
 					"name": "client/{id}",
 					"item": [
 						{
-							"name": "Returns client action log.",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200, response is json\", function () {",
-											"    pm.response.to.have.status(200);",
-											"    pm.response.to.be.json;",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{TOKEN}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/api/client/{{Client_id}}/log?perPage=5&page=1&sort=dt",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"api",
-										"client",
-										"{{Client_id}}",
-										"log"
-									],
-									"query": [
-										{
-											"key": "perPage",
-											"value": "5",
-											"description": "(Required) Count items in page"
-										},
-										{
-											"key": "page",
-											"value": "1",
-											"description": "(Required) Numeric page"
-										},
-										{
-											"key": "sort",
-											"value": "dt",
-											"description": "Field by that need to be sorted"
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "Successful operation.",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/api/client/:id/log?perPage=5&page=1&sort=dt",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"api",
-												"client",
-												":id",
-												"log"
-											],
-											"query": [
-												{
-													"key": "perPage",
-													"value": "5"
-												},
-												{
-													"key": "page",
-													"value": "1"
-												},
-												{
-													"key": "sort",
-													"value": "dt"
-												}
-											],
-											"variable": [
-												{
-													"key": "protocol",
-													"value": "{{protocol}}",
-													"description": " (This can only be one of http,https)"
-												},
-												{
-													"key": "environment",
-													"value": "{{environment}}"
-												},
-												{
-													"key": "id",
-													"value": "-43192755",
-													"description": "(Required) Client id"
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "text",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "text/plain"
-										}
-									],
-									"cookie": [],
-									"body": ""
-								},
-								{
-									"name": "Unauthorized",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/api/client/:id/log?perPage=5&page=1&sort=dt",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"api",
-												"client",
-												":id",
-												"log"
-											],
-											"query": [
-												{
-													"key": "perPage",
-													"value": "5"
-												},
-												{
-													"key": "page",
-													"value": "1"
-												},
-												{
-													"key": "sort",
-													"value": "dt"
-												}
-											],
-											"variable": [
-												{
-													"key": "protocol",
-													"value": "{{protocol}}",
-													"description": " (This can only be one of http,https)"
-												},
-												{
-													"key": "environment",
-													"value": "{{environment}}"
-												},
-												{
-													"key": "id",
-													"value": "-43192755",
-													"description": "(Required) Client id"
-												}
-											]
-										}
-									},
-									"status": "Unauthorized",
-									"code": 401,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"body": "{\n \"code\": 401,\n \"message\": \"Expired JWT Token\"\n}"
-								},
-								{
-									"name": "Access Denied",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/api/client/:id/log?perPage=5&page=1&sort=dt",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"api",
-												"client",
-												":id",
-												"log"
-											],
-											"query": [
-												{
-													"key": "perPage",
-													"value": "5"
-												},
-												{
-													"key": "page",
-													"value": "1"
-												},
-												{
-													"key": "sort",
-													"value": "dt"
-												}
-											],
-											"variable": [
-												{
-													"key": "protocol",
-													"value": "{{protocol}}",
-													"description": " (This can only be one of http,https)"
-												},
-												{
-													"key": "environment",
-													"value": "{{environment}}"
-												},
-												{
-													"key": "id",
-													"value": "-43192755",
-													"description": "(Required) Client id"
-												}
-											]
-										}
-									},
-									"status": "Forbidden",
-									"code": 403,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"body": "{\n \"code\": 403,\n \"message\": \"Access Denied.\"\n}"
-								}
-							]
-						},
-						{
 							"name": "Returns list Clients.",
 							"event": [
 								{
@@ -1749,6 +1507,248 @@
 												{
 													"key": "environment",
 													"value": "{{environment}}"
+												}
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"code\": 403,\n \"message\": \"Access Denied.\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Returns client action log.",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200, response is json\", function () {",
+											"    pm.response.to.have.status(200);",
+											"    pm.response.to.be.json;",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/client/{{Client_id}}/log?perPage=5&page=1&sort=dt",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"client",
+										"{{Client_id}}",
+										"log"
+									],
+									"query": [
+										{
+											"key": "perPage",
+											"value": "5",
+											"description": "(Required) Count items in page"
+										},
+										{
+											"key": "page",
+											"value": "1",
+											"description": "(Required) Numeric page"
+										},
+										{
+											"key": "sort",
+											"value": "dt",
+											"description": "Field by that need to be sorted"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Successful operation.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/client/:id/log?perPage=5&page=1&sort=dt",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"client",
+												":id",
+												"log"
+											],
+											"query": [
+												{
+													"key": "perPage",
+													"value": "5"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "sort",
+													"value": "dt"
+												}
+											],
+											"variable": [
+												{
+													"key": "protocol",
+													"value": "{{protocol}}",
+													"description": " (This can only be one of http,https)"
+												},
+												{
+													"key": "environment",
+													"value": "{{environment}}"
+												},
+												{
+													"key": "id",
+													"value": "-43192755",
+													"description": "(Required) Client id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Unauthorized",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/client/:id/log?perPage=5&page=1&sort=dt",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"client",
+												":id",
+												"log"
+											],
+											"query": [
+												{
+													"key": "perPage",
+													"value": "5"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "sort",
+													"value": "dt"
+												}
+											],
+											"variable": [
+												{
+													"key": "protocol",
+													"value": "{{protocol}}",
+													"description": " (This can only be one of http,https)"
+												},
+												{
+													"key": "environment",
+													"value": "{{environment}}"
+												},
+												{
+													"key": "id",
+													"value": "-43192755",
+													"description": "(Required) Client id"
+												}
+											]
+										}
+									},
+									"status": "Unauthorized",
+									"code": 401,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"code\": 401,\n \"message\": \"Expired JWT Token\"\n}"
+								},
+								{
+									"name": "Access Denied",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/client/:id/log?perPage=5&page=1&sort=dt",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"client",
+												":id",
+												"log"
+											],
+											"query": [
+												{
+													"key": "perPage",
+													"value": "5"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "sort",
+													"value": "dt"
+												}
+											],
+											"variable": [
+												{
+													"key": "protocol",
+													"value": "{{protocol}}",
+													"description": " (This can only be one of http,https)"
+												},
+												{
+													"key": "environment",
+													"value": "{{environment}}"
+												},
+												{
+													"key": "id",
+													"value": "-43192755",
+													"description": "(Required) Client id"
 												}
 											]
 										}
@@ -3186,6 +3186,815 @@
 							"name": "{id}",
 							"item": [
 								{
+									"name": "Returns users.",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200, response is json\", function () {",
+													"    pm.response.to.have.status(200);",
+													"    pm.response.to.be.json;",
+													"    var jsonData = pm.response.json();",
+													"    pm.globals.set(\"User_id\", jsonData.items[0].id);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/users?perPage=5&page=1",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"users"
+											],
+											"query": [
+												{
+													"key": "search",
+													"value": "aute amet",
+													"description": "Values that need to be considered for search",
+													"disabled": true
+												},
+												{
+													"key": "perPage",
+													"value": "5",
+													"description": "(Required) Count items in page"
+												},
+												{
+													"key": "page",
+													"value": "1",
+													"description": "(Required) Numeric page"
+												}
+											],
+											"variable": [
+												{
+													"key": "protocol",
+													"value": "{{protocol}}",
+													"description": " (This can only be one of http,https)"
+												},
+												{
+													"key": "environment",
+													"value": "{{environment}}"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Returns Users list.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/users?search=aute amet&perPage=5&page=1",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"users"
+													],
+													"query": [
+														{
+															"key": "search",
+															"value": "aute amet"
+														},
+														{
+															"key": "perPage",
+															"value": "5"
+														},
+														{
+															"key": "page",
+															"value": "1"
+														}
+													],
+													"variable": [
+														{
+															"key": "protocol",
+															"value": "{{protocol}}",
+															"description": " (This can only be one of http,https)"
+														},
+														{
+															"key": "environment",
+															"value": "{{environment}}"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/users?search=aute amet&perPage=5&page=1",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"users"
+													],
+													"query": [
+														{
+															"key": "search",
+															"value": "aute amet"
+														},
+														{
+															"key": "perPage",
+															"value": "5"
+														},
+														{
+															"key": "page",
+															"value": "1"
+														}
+													],
+													"variable": [
+														{
+															"key": "protocol",
+															"value": "{{protocol}}",
+															"description": " (This can only be one of http,https)"
+														},
+														{
+															"key": "environment",
+															"value": "{{environment}}"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"code\": 401,\n \"message\": \"Expired JWT Token\"\n}"
+										},
+										{
+											"name": "Access Denied",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/users?search=aute amet&perPage=5&page=1",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"users"
+													],
+													"query": [
+														{
+															"key": "search",
+															"value": "aute amet"
+														},
+														{
+															"key": "perPage",
+															"value": "5"
+														},
+														{
+															"key": "page",
+															"value": "1"
+														}
+													],
+													"variable": [
+														{
+															"key": "protocol",
+															"value": "{{protocol}}",
+															"description": " (This can only be one of http,https)"
+														},
+														{
+															"key": "environment",
+															"value": "{{environment}}"
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"code\": 403,\n \"message\": \"Access Denied.\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Find user by ID.",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200, response is json\", function () {",
+													"    pm.response.to.have.status(200);",
+													"    pm.response.to.be.json;",
+													"    let email = 'qwerty'+Math.random()+'@domain.com';",
+													"    pm.globals.set('Email',email);",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/user/{{User_id}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"user",
+												"{{User_id}}"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Returns User.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/user/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"user",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "protocol",
+															"value": "{{protocol}}",
+															"description": " (This can only be one of http,https)"
+														},
+														{
+															"key": "environment",
+															"value": "{{environment}}"
+														},
+														{
+															"key": "id",
+															"value": "aute amet",
+															"description": "(Required) Id User"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"id\": \"sunt aute nisi id incididunt\",\n \"username\": \"sed reprehender\",\n \"email\": \"tempor occaecat\",\n \"roles\": [\n  \"ROLE_TECH\",\n  \"ROLE_ADMIN\"\n ]\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/user/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"user",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "protocol",
+															"value": "{{protocol}}",
+															"description": " (This can only be one of http,https)"
+														},
+														{
+															"key": "environment",
+															"value": "{{environment}}"
+														},
+														{
+															"key": "id",
+															"value": "aute amet",
+															"description": "(Required) Id User"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"code\": 401,\n \"message\": \"Expired JWT Token\"\n}"
+										},
+										{
+											"name": "Access Denied",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/user/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"user",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "protocol",
+															"value": "{{protocol}}",
+															"description": " (This can only be one of http,https)"
+														},
+														{
+															"key": "environment",
+															"value": "{{environment}}"
+														},
+														{
+															"key": "id",
+															"value": "aute amet",
+															"description": "(Required) Id User"
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"code\": 403,\n \"message\": \"Access Denied.\"\n}"
+										},
+										{
+											"name": "Returned when the Item is not found",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/user/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"user",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "protocol",
+															"value": "{{protocol}}",
+															"description": " (This can only be one of http,https)"
+														},
+														{
+															"key": "environment",
+															"value": "{{environment}}"
+														},
+														{
+															"key": "id",
+															"value": "aute amet",
+															"description": "(Required) Id User"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"code\": 404,\n \"messages\": \"Item not found.\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Update User.",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200, response is json\", function () {",
+													"    pm.response.to.have.status(200);",
+													"    pm.response.to.be.json;",
+													"    // pm.globals.get('Email');",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"first_name\": \"sed\",\n    \"last_name\": \"minim est aute laboris\",\n    \"password\": \"labore nostrud\",\n    \"email\": \"{{$randomExampleEmail}}\",\n    \"roles\": [\n        \"ROLE_ADMIN\"\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/user/{{User_id}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"user",
+												"{{User_id}}"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Return  User.",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"first_name\": \"sed\",\n    \"last_name\": \"minim est aute laboris\",\n    \"password\": \"labore nostrud\",\n    \"email\": \"ex c\",\n    \"roles\": [\n        \"ROLE_TECH\",\n        \"ROLE_ADMIN\"\n    ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/user/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"user",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "protocol",
+															"value": "{{protocol}}",
+															"description": " (This can only be one of http,https)"
+														},
+														{
+															"key": "environment",
+															"value": "{{environment}}"
+														},
+														{
+															"key": "id",
+															"value": "aute amet",
+															"description": "(Required) Id of User to update"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"id\": \"sunt aute nisi id incididunt\",\n \"username\": \"sed reprehender\",\n \"email\": \"tempor occaecat\",\n \"roles\": [\n  \"ROLE_TECH\",\n  \"ROLE_ADMIN\"\n ]\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"first_name\": \"sed\",\n    \"last_name\": \"minim est aute laboris\",\n    \"password\": \"labore nostrud\",\n    \"email\": \"ex c\",\n    \"roles\": [\n        \"ROLE_TECH\",\n        \"ROLE_ADMIN\"\n    ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/user/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"user",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "protocol",
+															"value": "{{protocol}}",
+															"description": " (This can only be one of http,https)"
+														},
+														{
+															"key": "environment",
+															"value": "{{environment}}"
+														},
+														{
+															"key": "id",
+															"value": "aute amet",
+															"description": "(Required) Id of User to update"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"code\": 401,\n \"message\": \"Expired JWT Token\"\n}"
+										},
+										{
+											"name": "Access Denied",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"first_name\": \"sed\",\n    \"last_name\": \"minim est aute laboris\",\n    \"password\": \"labore nostrud\",\n    \"email\": \"ex c\",\n    \"roles\": [\n        \"ROLE_TECH\",\n        \"ROLE_ADMIN\"\n    ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/user/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"user",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "protocol",
+															"value": "{{protocol}}",
+															"description": " (This can only be one of http,https)"
+														},
+														{
+															"key": "environment",
+															"value": "{{environment}}"
+														},
+														{
+															"key": "id",
+															"value": "aute amet",
+															"description": "(Required) Id of User to update"
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"code\": 403,\n \"message\": \"Access Denied.\"\n}"
+										},
+										{
+											"name": "Returned when the Item is not found",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"first_name\": \"sed\",\n    \"last_name\": \"minim est aute laboris\",\n    \"password\": \"labore nostrud\",\n    \"email\": \"ex c\",\n    \"roles\": [\n        \"ROLE_TECH\",\n        \"ROLE_ADMIN\"\n    ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/user/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"user",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "protocol",
+															"value": "{{protocol}}",
+															"description": " (This can only be one of http,https)"
+														},
+														{
+															"key": "environment",
+															"value": "{{environment}}"
+														},
+														{
+															"key": "id",
+															"value": "aute amet",
+															"description": "(Required) Id of User to update"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"code\": 404,\n \"messages\": \"Item not found.\"\n}"
+										}
+									]
+								},
+								{
 									"name": "Delete user by ID.",
 									"event": [
 										{
@@ -3422,547 +4231,6 @@
 															"key": "id",
 															"value": "aute amet",
 															"description": "(Required) Id User"
-														}
-													]
-												}
-											},
-											"status": "Not Found",
-											"code": 404,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "application/json"
-												}
-											],
-											"cookie": [],
-											"body": "{\n \"code\": 404,\n \"messages\": \"Item not found.\"\n}"
-										}
-									]
-								},
-								{
-									"name": "Find user by ID.",
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{TOKEN}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/api/user/:id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"api",
-												"user",
-												":id"
-											],
-											"variable": [
-												{
-													"key": "id",
-													"value": "2",
-													"description": "(Required) Id User"
-												}
-											]
-										}
-									},
-									"response": [
-										{
-											"name": "Returns User.",
-											"originalRequest": {
-												"method": "GET",
-												"header": [
-													{
-														"description": "Added as a part of security scheme: bearer",
-														"key": "Authorization",
-														"value": "Bearer <token>"
-													}
-												],
-												"url": {
-													"raw": "{{baseUrl}}/api/user/:id",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"api",
-														"user",
-														":id"
-													],
-													"variable": [
-														{
-															"key": "protocol",
-															"value": "{{protocol}}",
-															"description": " (This can only be one of http,https)"
-														},
-														{
-															"key": "environment",
-															"value": "{{environment}}"
-														},
-														{
-															"key": "id",
-															"value": "aute amet",
-															"description": "(Required) Id User"
-														}
-													]
-												}
-											},
-											"status": "OK",
-											"code": 200,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "application/json"
-												}
-											],
-											"cookie": [],
-											"body": "{\n \"id\": \"sunt aute nisi id incididunt\",\n \"username\": \"sed reprehender\",\n \"email\": \"tempor occaecat\",\n \"roles\": [\n  \"ROLE_TECH\",\n  \"ROLE_ADMIN\"\n ]\n}"
-										},
-										{
-											"name": "Unauthorized",
-											"originalRequest": {
-												"method": "GET",
-												"header": [
-													{
-														"description": "Added as a part of security scheme: bearer",
-														"key": "Authorization",
-														"value": "Bearer <token>"
-													}
-												],
-												"url": {
-													"raw": "{{baseUrl}}/api/user/:id",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"api",
-														"user",
-														":id"
-													],
-													"variable": [
-														{
-															"key": "protocol",
-															"value": "{{protocol}}",
-															"description": " (This can only be one of http,https)"
-														},
-														{
-															"key": "environment",
-															"value": "{{environment}}"
-														},
-														{
-															"key": "id",
-															"value": "aute amet",
-															"description": "(Required) Id User"
-														}
-													]
-												}
-											},
-											"status": "Unauthorized",
-											"code": 401,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "application/json"
-												}
-											],
-											"cookie": [],
-											"body": "{\n \"code\": 401,\n \"message\": \"Expired JWT Token\"\n}"
-										},
-										{
-											"name": "Access Denied",
-											"originalRequest": {
-												"method": "GET",
-												"header": [
-													{
-														"description": "Added as a part of security scheme: bearer",
-														"key": "Authorization",
-														"value": "Bearer <token>"
-													}
-												],
-												"url": {
-													"raw": "{{baseUrl}}/api/user/:id",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"api",
-														"user",
-														":id"
-													],
-													"variable": [
-														{
-															"key": "protocol",
-															"value": "{{protocol}}",
-															"description": " (This can only be one of http,https)"
-														},
-														{
-															"key": "environment",
-															"value": "{{environment}}"
-														},
-														{
-															"key": "id",
-															"value": "aute amet",
-															"description": "(Required) Id User"
-														}
-													]
-												}
-											},
-											"status": "Forbidden",
-											"code": 403,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "application/json"
-												}
-											],
-											"cookie": [],
-											"body": "{\n \"code\": 403,\n \"message\": \"Access Denied.\"\n}"
-										},
-										{
-											"name": "Returned when the Item is not found",
-											"originalRequest": {
-												"method": "GET",
-												"header": [
-													{
-														"description": "Added as a part of security scheme: bearer",
-														"key": "Authorization",
-														"value": "Bearer <token>"
-													}
-												],
-												"url": {
-													"raw": "{{baseUrl}}/api/user/:id",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"api",
-														"user",
-														":id"
-													],
-													"variable": [
-														{
-															"key": "protocol",
-															"value": "{{protocol}}",
-															"description": " (This can only be one of http,https)"
-														},
-														{
-															"key": "environment",
-															"value": "{{environment}}"
-														},
-														{
-															"key": "id",
-															"value": "aute amet",
-															"description": "(Required) Id User"
-														}
-													]
-												}
-											},
-											"status": "Not Found",
-											"code": 404,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "application/json"
-												}
-											],
-											"cookie": [],
-											"body": "{\n \"code\": 404,\n \"messages\": \"Item not found.\"\n}"
-										}
-									]
-								},
-								{
-									"name": "Update User.",
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "<Bearer Token>",
-													"type": "string"
-												}
-											]
-										},
-										"method": "PUT",
-										"header": [
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"first_name\": \"sed\",\n    \"last_name\": \"minim est aute laboris\",\n    \"password\": \"labore nostrud\",\n    \"email\": \"ex c\",\n    \"roles\": [\n        \"ROLE_TECH\",\n        \"ROLE_ADMIN\"\n    ]\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/api/user/:id",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"api",
-												"user",
-												":id"
-											],
-											"variable": [
-												{
-													"key": "protocol",
-													"value": "{{protocol}}",
-													"description": " (This can only be one of http,https)"
-												},
-												{
-													"key": "environment",
-													"value": "{{environment}}"
-												},
-												{
-													"key": "id",
-													"value": "aute amet",
-													"description": "(Required) Id of User to update"
-												}
-											]
-										}
-									},
-									"response": [
-										{
-											"name": "Return  User.",
-											"originalRequest": {
-												"method": "PUT",
-												"header": [
-													{
-														"description": "Added as a part of security scheme: bearer",
-														"key": "Authorization",
-														"value": "Bearer <token>"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"first_name\": \"sed\",\n    \"last_name\": \"minim est aute laboris\",\n    \"password\": \"labore nostrud\",\n    \"email\": \"ex c\",\n    \"roles\": [\n        \"ROLE_TECH\",\n        \"ROLE_ADMIN\"\n    ]\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{baseUrl}}/api/user/:id",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"api",
-														"user",
-														":id"
-													],
-													"variable": [
-														{
-															"key": "protocol",
-															"value": "{{protocol}}",
-															"description": " (This can only be one of http,https)"
-														},
-														{
-															"key": "environment",
-															"value": "{{environment}}"
-														},
-														{
-															"key": "id",
-															"value": "aute amet",
-															"description": "(Required) Id of User to update"
-														}
-													]
-												}
-											},
-											"status": "OK",
-											"code": 200,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "application/json"
-												}
-											],
-											"cookie": [],
-											"body": "{\n \"id\": \"sunt aute nisi id incididunt\",\n \"username\": \"sed reprehender\",\n \"email\": \"tempor occaecat\",\n \"roles\": [\n  \"ROLE_TECH\",\n  \"ROLE_ADMIN\"\n ]\n}"
-										},
-										{
-											"name": "Unauthorized",
-											"originalRequest": {
-												"method": "PUT",
-												"header": [
-													{
-														"description": "Added as a part of security scheme: bearer",
-														"key": "Authorization",
-														"value": "Bearer <token>"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"first_name\": \"sed\",\n    \"last_name\": \"minim est aute laboris\",\n    \"password\": \"labore nostrud\",\n    \"email\": \"ex c\",\n    \"roles\": [\n        \"ROLE_TECH\",\n        \"ROLE_ADMIN\"\n    ]\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{baseUrl}}/api/user/:id",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"api",
-														"user",
-														":id"
-													],
-													"variable": [
-														{
-															"key": "protocol",
-															"value": "{{protocol}}",
-															"description": " (This can only be one of http,https)"
-														},
-														{
-															"key": "environment",
-															"value": "{{environment}}"
-														},
-														{
-															"key": "id",
-															"value": "aute amet",
-															"description": "(Required) Id of User to update"
-														}
-													]
-												}
-											},
-											"status": "Unauthorized",
-											"code": 401,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "application/json"
-												}
-											],
-											"cookie": [],
-											"body": "{\n \"code\": 401,\n \"message\": \"Expired JWT Token\"\n}"
-										},
-										{
-											"name": "Access Denied",
-											"originalRequest": {
-												"method": "PUT",
-												"header": [
-													{
-														"description": "Added as a part of security scheme: bearer",
-														"key": "Authorization",
-														"value": "Bearer <token>"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"first_name\": \"sed\",\n    \"last_name\": \"minim est aute laboris\",\n    \"password\": \"labore nostrud\",\n    \"email\": \"ex c\",\n    \"roles\": [\n        \"ROLE_TECH\",\n        \"ROLE_ADMIN\"\n    ]\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{baseUrl}}/api/user/:id",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"api",
-														"user",
-														":id"
-													],
-													"variable": [
-														{
-															"key": "protocol",
-															"value": "{{protocol}}",
-															"description": " (This can only be one of http,https)"
-														},
-														{
-															"key": "environment",
-															"value": "{{environment}}"
-														},
-														{
-															"key": "id",
-															"value": "aute amet",
-															"description": "(Required) Id of User to update"
-														}
-													]
-												}
-											},
-											"status": "Forbidden",
-											"code": 403,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "application/json"
-												}
-											],
-											"cookie": [],
-											"body": "{\n \"code\": 403,\n \"message\": \"Access Denied.\"\n}"
-										},
-										{
-											"name": "Returned when the Item is not found",
-											"originalRequest": {
-												"method": "PUT",
-												"header": [
-													{
-														"description": "Added as a part of security scheme: bearer",
-														"key": "Authorization",
-														"value": "Bearer <token>"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"first_name\": \"sed\",\n    \"last_name\": \"minim est aute laboris\",\n    \"password\": \"labore nostrud\",\n    \"email\": \"ex c\",\n    \"roles\": [\n        \"ROLE_TECH\",\n        \"ROLE_ADMIN\"\n    ]\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{baseUrl}}/api/user/:id",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"api",
-														"user",
-														":id"
-													],
-													"variable": [
-														{
-															"key": "protocol",
-															"value": "{{protocol}}",
-															"description": " (This can only be one of http,https)"
-														},
-														{
-															"key": "environment",
-															"value": "{{environment}}"
-														},
-														{
-															"key": "id",
-															"value": "aute amet",
-															"description": "(Required) Id of User to update"
 														}
 													]
 												}
@@ -4285,13 +4553,27 @@
 									"item": [
 										{
 											"name": "Return Group of Channels data.",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"Status code is 200, response is json\", function () {",
+															"    pm.response.to.have.status(200);",
+															"    pm.response.to.be.json;",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
 											"request": {
 												"auth": {
 													"type": "bearer",
 													"bearer": [
 														{
 															"key": "token",
-															"value": "<Bearer Token>",
+															"value": "{{TOKEN}}",
 															"type": "string"
 														}
 													]
@@ -4311,17 +4593,8 @@
 													],
 													"variable": [
 														{
-															"key": "protocol",
-															"value": "{{protocol}}",
-															"description": " (This can only be one of http,https)"
-														},
-														{
-															"key": "environment",
-															"value": "{{environment}}"
-														},
-														{
 															"key": "groupId",
-															"value": "-43192755",
+															"value": "{{groups_id}}",
 															"description": "(Required) Id Group of Channels"
 														}
 													]
@@ -4540,13 +4813,27 @@
 										},
 										{
 											"name": "Update Group of Channel data.",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"Status code is 200, response is json\", function () {",
+															"    pm.response.to.have.status(200);",
+															"    pm.response.to.be.json;",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
 											"request": {
 												"auth": {
 													"type": "bearer",
 													"bearer": [
 														{
 															"key": "token",
-															"value": "<Bearer Token>",
+															"value": "{{TOKEN}}",
 															"type": "string"
 														}
 													]
@@ -4560,7 +4847,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n    \"name\": \"anim\",\n    \"color\": \"in\",\n    \"sort\": 198\n}",
+													"raw": "{\n    \"name\": \"anim1\",\n    \"color\": \"in\",\n    \"sort\": 198\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -4568,7 +4855,7 @@
 													}
 												},
 												"url": {
-													"raw": "{{baseUrl}}/api/channels/group/:groupId",
+													"raw": "{{baseUrl}}/api/channels/group/{{groups_id}}",
 													"host": [
 														"{{baseUrl}}"
 													],
@@ -4576,23 +4863,7 @@
 														"api",
 														"channels",
 														"group",
-														":groupId"
-													],
-													"variable": [
-														{
-															"key": "protocol",
-															"value": "{{protocol}}",
-															"description": " (This can only be one of http,https)"
-														},
-														{
-															"key": "environment",
-															"value": "{{environment}}"
-														},
-														{
-															"key": "groupId",
-															"value": "-43192755",
-															"description": "(Required) Id Group of Channels"
-														}
+														"{{groups_id}}"
 													]
 												}
 											},
@@ -4845,13 +5116,27 @@
 										},
 										{
 											"name": "Delete Group of Channel.",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"Status code is 204, response is json\", function () {",
+															"    pm.response.to.have.status(204);",
+															"    pm.response.to.be.json;",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
 											"request": {
 												"auth": {
 													"type": "bearer",
 													"bearer": [
 														{
 															"key": "token",
-															"value": "<Bearer Token>",
+															"value": "{{TOKEN}}",
 															"type": "string"
 														}
 													]
@@ -4871,17 +5156,8 @@
 													],
 													"variable": [
 														{
-															"key": "protocol",
-															"value": "{{protocol}}",
-															"description": " (This can only be one of http,https)"
-														},
-														{
-															"key": "environment",
-															"value": "{{environment}}"
-														},
-														{
 															"key": "groupId",
-															"value": "-43192755",
+															"value": "{{groups_id}}",
 															"description": "(Required) Id Group of Channel"
 														}
 													]
@@ -5387,6 +5663,8 @@
 											"pm.test(\"Status code is 200, response is json\", function () {",
 											"    pm.response.to.have.status(200);",
 											"    pm.response.to.be.json;",
+											"    var jsonData = pm.response.json();",
+											"    pm.globals.set(\"channels_id\", jsonData.items[1].id);",
 											"});",
 											""
 										],
@@ -5738,6 +6016,8 @@
 											"pm.test(\"Status code is 200, response is json\", function () {",
 											"    pm.response.to.have.status(200);",
 											"    pm.response.to.be.json;",
+											"    var jsonData = pm.response.json();",
+											"    pm.globals.set(\"groups_id\", jsonData.items[0].id);",
 											"});"
 										],
 										"type": "text/javascript"
@@ -6054,13 +6334,27 @@
 									"item": [
 										{
 											"name": "Return Channel info.",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"Status code is 200, response is json\", function () {",
+															"    pm.response.to.have.status(200);",
+															"    pm.response.to.be.json;",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
 											"request": {
 												"auth": {
 													"type": "bearer",
 													"bearer": [
 														{
 															"key": "token",
-															"value": "<Bearer Token>",
+															"value": "{{TOKEN}}",
 															"type": "string"
 														}
 													]
@@ -6068,31 +6362,15 @@
 												"method": "GET",
 												"header": [],
 												"url": {
-													"raw": "{{baseUrl}}/api/channel/:id/info",
+													"raw": "{{baseUrl}}/api/channel/{{channels_id}}/info",
 													"host": [
 														"{{baseUrl}}"
 													],
 													"path": [
 														"api",
 														"channel",
-														":id",
+														"{{channels_id}}",
 														"info"
-													],
-													"variable": [
-														{
-															"key": "protocol",
-															"value": "{{protocol}}",
-															"description": " (This can only be one of http,https)"
-														},
-														{
-															"key": "environment",
-															"value": "{{environment}}"
-														},
-														{
-															"key": "id",
-															"value": "-43192755",
-															"description": "(Required) Id Channel"
-														}
 													]
 												}
 											},
@@ -6309,13 +6587,27 @@
 										},
 										{
 											"name": "Update Channel info.",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"Status code is 200, response is json\", function () {",
+															"    pm.response.to.have.status(200);",
+															"    pm.response.to.be.json;",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
 											"request": {
 												"auth": {
 													"type": "bearer",
 													"bearer": [
 														{
 															"key": "token",
-															"value": "<Bearer Token>",
+															"value": "{{TOKEN}}",
 															"type": "string"
 														}
 													]
@@ -6329,7 +6621,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n    \"name\": \"laborum vel\",\n    \"id_group\": 82105078,\n    \"epg_src\": 95481041,\n    \"epg_source\": \"m\",\n    \"status\": true,\n    \"is_video\": false,\n    \"need_auth\": false,\n    \"protected\": false,\n    \"comment\": \"pariatur amet\"\n}",
+													"raw": "{\n    \"name\": \"laborum vel\",\n    \"id_group\": 9,\n    \"epg_src\": 9,\n    \"epg_source\": \"m\",\n    \"status\": true,\n    \"is_video\": false,\n    \"need_auth\": false,\n    \"protected\": false,\n    \"comment\": \"{{$randomCompanyName}}\"\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -6349,17 +6641,8 @@
 													],
 													"variable": [
 														{
-															"key": "protocol",
-															"value": "{{protocol}}",
-															"description": " (This can only be one of http,https)"
-														},
-														{
-															"key": "environment",
-															"value": "{{environment}}"
-														},
-														{
 															"key": "id",
-															"value": "-43192755",
+															"value": "{{channels_id}}",
 															"description": "(Required) Id Channel"
 														}
 													]
@@ -6619,13 +6902,27 @@
 									"item": [
 										{
 											"name": "Return Images of Channel.",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"Status code is 200, response is json\", function () {",
+															"    pm.response.to.have.status(200);",
+															"    pm.response.to.be.json;",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
 											"request": {
 												"auth": {
 													"type": "bearer",
 													"bearer": [
 														{
 															"key": "token",
-															"value": "<Bearer Token>",
+															"value": "{{TOKEN}}",
 															"type": "string"
 														}
 													]
@@ -6645,17 +6942,8 @@
 													],
 													"variable": [
 														{
-															"key": "protocol",
-															"value": "{{protocol}}",
-															"description": " (This can only be one of http,https)"
-														},
-														{
-															"key": "environment",
-															"value": "{{environment}}"
-														},
-														{
 															"key": "id",
-															"value": "-43192755",
+															"value": "{{channels_id}}",
 															"description": "(Required) Id Channel"
 														}
 													]
@@ -7184,13 +7472,27 @@
 									"item": [
 										{
 											"name": "Return Channels other data.",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"Status code is 200, response is json\", function () {",
+															"    pm.response.to.have.status(200);",
+															"    pm.response.to.be.json;",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
 											"request": {
 												"auth": {
 													"type": "bearer",
 													"bearer": [
 														{
 															"key": "token",
-															"value": "<Bearer Token>",
+															"value": "{{TOKEN}}",
 															"type": "string"
 														}
 													]
@@ -7210,17 +7512,8 @@
 													],
 													"variable": [
 														{
-															"key": "protocol",
-															"value": "{{protocol}}",
-															"description": " (This can only be one of http,https)"
-														},
-														{
-															"key": "environment",
-															"value": "{{environment}}"
-														},
-														{
 															"key": "id",
-															"value": "-43192755",
+															"value": "{{channels_id}}",
 															"description": "(Required) Id Channel"
 														}
 													]
@@ -7439,13 +7732,27 @@
 										},
 										{
 											"name": "Update Channel other data.",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"Status code is 200, response is json\", function () {",
+															"    pm.response.to.have.status(200);",
+															"    pm.response.to.be.json;",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
 											"request": {
 												"auth": {
 													"type": "bearer",
 													"bearer": [
 														{
 															"key": "token",
-															"value": "<Bearer Token>",
+															"value": "{{TOKEN}}",
 															"type": "string"
 														}
 													]
@@ -7459,7 +7766,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n    \"stream_src\": \"ad\",\n    \"need_bandwidth\": 37951977,\n    \"sort\": 94968487,\n    \"gag_url\": \"tempor consequat commodo cupidatat dolor\",\n    \"http_url\": \"occaecat ei\"\n}",
+													"raw": "{\n    \"stream_src\": \"\",\n    \"need_bandwidth\": 0,\n    \"sort\": 73,\n    \"gag_url\": \"\",\n    \"http_url\": \"\"\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -7478,15 +7785,6 @@
 														"others"
 													],
 													"variable": [
-														{
-															"key": "protocol",
-															"value": "{{protocol}}",
-															"description": " (This can only be one of http,https)"
-														},
-														{
-															"key": "environment",
-															"value": "{{environment}}"
-														},
 														{
 															"key": "id",
 															"value": "-43192755",
@@ -8003,14 +8301,361 @@
 									"name": "url",
 									"item": [
 										{
-											"name": "Update URL of Channel.",
+											"name": "Return Channel URLs list.",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"Status code is 200, response is json\", function () {",
+															"    pm.response.to.have.status(200);",
+															"    pm.response.to.be.json;",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
 											"request": {
 												"auth": {
 													"type": "bearer",
 													"bearer": [
 														{
 															"key": "token",
-															"value": "<Bearer Token>",
+															"value": "{{TOKEN}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/channel/:channelId/urls?sort=&perPage=5&page=1",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"channel",
+														":channelId",
+														"urls"
+													],
+													"query": [
+														{
+															"key": "sort",
+															"value": "",
+															"description": "Field by that need to be sorted"
+														},
+														{
+															"key": "perPage",
+															"value": "5",
+															"description": "Count items in page"
+														},
+														{
+															"key": "page",
+															"value": "1",
+															"description": "Numeric page"
+														}
+													],
+													"variable": [
+														{
+															"key": "channelId",
+															"value": "{{channels_id}}",
+															"description": "(Required) Id Channel"
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Return Channel URLs list.",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/channel/:channelId/urls?sort=hr&perPage=5&page=1",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"channel",
+																":channelId",
+																"urls"
+															],
+															"query": [
+																{
+																	"key": "sort",
+																	"value": "hr"
+																},
+																{
+																	"key": "perPage",
+																	"value": "5"
+																},
+																{
+																	"key": "page",
+																	"value": "1"
+																}
+															],
+															"variable": [
+																{
+																	"key": "protocol",
+																	"value": "{{protocol}}",
+																	"description": " (This can only be one of http,https)"
+																},
+																{
+																	"key": "environment",
+																	"value": "{{environment}}"
+																},
+																{
+																	"key": "channelId",
+																	"value": "-43192755",
+																	"description": "(Required) Id Channel"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"currentPage\": 80121219,\n \"totalPages\": -29072689,\n \"itemsPerPage\": 44674667,\n \"totalItems\": 24546722,\n \"items\": [\n  {\n   \"id_channel\": 32604053,\n   \"hr\": 599831,\n   \"url\": \"in\",\n   \"status\": true,\n   \"id_profile\": 53353485,\n   \"profile\": {\n    \"id\": 74810245,\n    \"title\": \"eiusmod minim deserunt fugiat\"\n   },\n   \"encryption\": {\n    \"id\": 119732,\n    \"title\": \"ut quis aliquip\"\n   }\n  },\n  {\n   \"id_channel\": -28906804,\n   \"hr\": -15907885,\n   \"url\": \"enim proident\",\n   \"status\": false,\n   \"id_profile\": 75576582,\n   \"profile\": {\n    \"id\": -34991543,\n    \"title\": \"i\"\n   },\n   \"encryption\": {\n    \"id\": 14939572,\n    \"title\": \"enim deserunt\"\n   }\n  }\n ]\n}"
+												},
+												{
+													"name": "Unauthorized",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/channel/:channelId/urls?sort=hr&perPage=5&page=1",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"channel",
+																":channelId",
+																"urls"
+															],
+															"query": [
+																{
+																	"key": "sort",
+																	"value": "hr"
+																},
+																{
+																	"key": "perPage",
+																	"value": "5"
+																},
+																{
+																	"key": "page",
+																	"value": "1"
+																}
+															],
+															"variable": [
+																{
+																	"key": "protocol",
+																	"value": "{{protocol}}",
+																	"description": " (This can only be one of http,https)"
+																},
+																{
+																	"key": "environment",
+																	"value": "{{environment}}"
+																},
+																{
+																	"key": "channelId",
+																	"value": "-43192755",
+																	"description": "(Required) Id Channel"
+																}
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"code\": 401,\n \"message\": \"Expired JWT Token\"\n}"
+												},
+												{
+													"name": "Access Denied",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/channel/:channelId/urls?sort=hr&perPage=5&page=1",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"channel",
+																":channelId",
+																"urls"
+															],
+															"query": [
+																{
+																	"key": "sort",
+																	"value": "hr"
+																},
+																{
+																	"key": "perPage",
+																	"value": "5"
+																},
+																{
+																	"key": "page",
+																	"value": "1"
+																}
+															],
+															"variable": [
+																{
+																	"key": "protocol",
+																	"value": "{{protocol}}",
+																	"description": " (This can only be one of http,https)"
+																},
+																{
+																	"key": "environment",
+																	"value": "{{environment}}"
+																},
+																{
+																	"key": "channelId",
+																	"value": "-43192755",
+																	"description": "(Required) Id Channel"
+																}
+															]
+														}
+													},
+													"status": "Forbidden",
+													"code": 403,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"code\": 403,\n \"message\": \"Access Denied.\"\n}"
+												},
+												{
+													"name": "Returned when the Item is not found",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/channel/:channelId/urls?sort=hr&perPage=5&page=1",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"channel",
+																":channelId",
+																"urls"
+															],
+															"query": [
+																{
+																	"key": "sort",
+																	"value": "hr"
+																},
+																{
+																	"key": "perPage",
+																	"value": "5"
+																},
+																{
+																	"key": "page",
+																	"value": "1"
+																}
+															],
+															"variable": [
+																{
+																	"key": "protocol",
+																	"value": "{{protocol}}",
+																	"description": " (This can only be one of http,https)"
+																},
+																{
+																	"key": "environment",
+																	"value": "{{environment}}"
+																},
+																{
+																	"key": "channelId",
+																	"value": "-43192755",
+																	"description": "(Required) Id Channel"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"code\": 404,\n \"messages\": \"Item not found.\"\n}"
+												}
+											]
+										},
+										{
+											"name": "Update URL of Channel.",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"Status code is 200, response is json\", function () {",
+															"    pm.response.to.have.status(200);",
+															"    pm.response.to.be.json;",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{TOKEN}}",
 															"type": "string"
 														}
 													]
@@ -8024,7 +8669,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n    \"hr\": 32459941,\n    \"id_profile\": 79577693,\n    \"url\": \"officia quis nostrud proi\",\n    \"status\": false,\n    \"encryption_type\": -54396683,\n    \"epg_source\": \"do \"\n}",
+													"raw": "{\n    \"hr\": 99,\n    \"id_profile\": 2,\n    \"url\": \"{{$randomUrl}}\",\n    \"status\": false,\n    \"encryption_type\": 1,\n    \"epg_source\": \"do \"\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -8032,31 +8677,15 @@
 													}
 												},
 												"url": {
-													"raw": "{{baseUrl}}/api/channel/:channelId/url",
+													"raw": "{{baseUrl}}/api/channel/{{channels_id}}/url",
 													"host": [
 														"{{baseUrl}}"
 													],
 													"path": [
 														"api",
 														"channel",
-														":channelId",
+														"{{channels_id}}",
 														"url"
-													],
-													"variable": [
-														{
-															"key": "protocol",
-															"value": "{{protocol}}",
-															"description": " (This can only be one of http,https)"
-														},
-														{
-															"key": "environment",
-															"value": "{{environment}}"
-														},
-														{
-															"key": "channelId",
-															"value": "-43192755",
-															"description": "(Required) Id Channel"
-														}
 													]
 												}
 											},
@@ -8944,13 +9573,27 @@
 									"item": [
 										{
 											"name": "Return Channels Geo list.",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"Status code is 200, response is json\", function () {",
+															"    pm.response.to.have.status(200);",
+															"    pm.response.to.be.json;",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
 											"request": {
 												"auth": {
 													"type": "bearer",
 													"bearer": [
 														{
 															"key": "token",
-															"value": "<Bearer Token>",
+															"value": "{{TOKEN}}",
 															"type": "string"
 														}
 													]
@@ -8970,17 +9613,8 @@
 													],
 													"variable": [
 														{
-															"key": "protocol",
-															"value": "{{protocol}}",
-															"description": " (This can only be one of http,https)"
-														},
-														{
-															"key": "environment",
-															"value": "{{environment}}"
-														},
-														{
 															"key": "channelId",
-															"value": "-43192755",
+															"value": "{{channels_id}}",
 															"description": "(Required) Id Channel"
 														}
 													]
@@ -9147,13 +9781,27 @@
 										},
 										{
 											"name": "Create Geo of Channel.",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"Status code is 200, response is json\", function () {",
+															"    pm.response.to.have.status(200);",
+															"    pm.response.to.be.json;",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
 											"request": {
 												"auth": {
 													"type": "bearer",
 													"bearer": [
 														{
 															"key": "token",
-															"value": "<Bearer Token>",
+															"value": "{{TOKEN}}",
 															"type": "string"
 														}
 													]
@@ -9167,7 +9815,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n    \"country_code\": \"\",\n    \"action\": \"allow\"\n}",
+													"raw": "{\n    \"country_code\": \"{{$randomCountryCode}}\",\n    \"action\": \"allow\"\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -9187,18 +9835,8 @@
 													],
 													"variable": [
 														{
-															"key": "protocol",
-															"value": "{{protocol}}",
-															"description": " (This can only be one of http,https)"
-														},
-														{
-															"key": "environment",
-															"value": "{{environment}}"
-														},
-														{
-															"key": "id",
-															"value": "-43192755",
-															"description": "(Required) Id Channel"
+															"key": "channelId",
+															"value": "{{channels_id}}"
 														}
 													]
 												}
@@ -9734,334 +10372,6 @@
 													"body": "{\n \"code\": 404,\n \"messages\": \"Item not found.\"\n}"
 												}
 											]
-										}
-									]
-								},
-								{
-									"name": "Return Channel URLs list.",
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "<Bearer Token>",
-													"type": "string"
-												}
-											]
-										},
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/api/channel/:channelId/urls?sort=hr&perPage=5&page=1",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"api",
-												"channel",
-												":channelId",
-												"urls"
-											],
-											"query": [
-												{
-													"key": "sort",
-													"value": "hr",
-													"description": "Field by that need to be sorted"
-												},
-												{
-													"key": "perPage",
-													"value": "5",
-													"description": "Count items in page"
-												},
-												{
-													"key": "page",
-													"value": "1",
-													"description": "Numeric page"
-												}
-											],
-											"variable": [
-												{
-													"key": "protocol",
-													"value": "{{protocol}}",
-													"description": " (This can only be one of http,https)"
-												},
-												{
-													"key": "environment",
-													"value": "{{environment}}"
-												},
-												{
-													"key": "channelId",
-													"value": "-43192755",
-													"description": "(Required) Id Channel"
-												}
-											]
-										}
-									},
-									"response": [
-										{
-											"name": "Return Channel URLs list.",
-											"originalRequest": {
-												"method": "GET",
-												"header": [
-													{
-														"description": "Added as a part of security scheme: bearer",
-														"key": "Authorization",
-														"value": "Bearer <token>"
-													}
-												],
-												"url": {
-													"raw": "{{baseUrl}}/api/channel/:channelId/urls?sort=hr&perPage=5&page=1",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"api",
-														"channel",
-														":channelId",
-														"urls"
-													],
-													"query": [
-														{
-															"key": "sort",
-															"value": "hr"
-														},
-														{
-															"key": "perPage",
-															"value": "5"
-														},
-														{
-															"key": "page",
-															"value": "1"
-														}
-													],
-													"variable": [
-														{
-															"key": "protocol",
-															"value": "{{protocol}}",
-															"description": " (This can only be one of http,https)"
-														},
-														{
-															"key": "environment",
-															"value": "{{environment}}"
-														},
-														{
-															"key": "channelId",
-															"value": "-43192755",
-															"description": "(Required) Id Channel"
-														}
-													]
-												}
-											},
-											"status": "OK",
-											"code": 200,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "application/json"
-												}
-											],
-											"cookie": [],
-											"body": "{\n \"currentPage\": 80121219,\n \"totalPages\": -29072689,\n \"itemsPerPage\": 44674667,\n \"totalItems\": 24546722,\n \"items\": [\n  {\n   \"id_channel\": 32604053,\n   \"hr\": 599831,\n   \"url\": \"in\",\n   \"status\": true,\n   \"id_profile\": 53353485,\n   \"profile\": {\n    \"id\": 74810245,\n    \"title\": \"eiusmod minim deserunt fugiat\"\n   },\n   \"encryption\": {\n    \"id\": 119732,\n    \"title\": \"ut quis aliquip\"\n   }\n  },\n  {\n   \"id_channel\": -28906804,\n   \"hr\": -15907885,\n   \"url\": \"enim proident\",\n   \"status\": false,\n   \"id_profile\": 75576582,\n   \"profile\": {\n    \"id\": -34991543,\n    \"title\": \"i\"\n   },\n   \"encryption\": {\n    \"id\": 14939572,\n    \"title\": \"enim deserunt\"\n   }\n  }\n ]\n}"
-										},
-										{
-											"name": "Unauthorized",
-											"originalRequest": {
-												"method": "GET",
-												"header": [
-													{
-														"description": "Added as a part of security scheme: bearer",
-														"key": "Authorization",
-														"value": "Bearer <token>"
-													}
-												],
-												"url": {
-													"raw": "{{baseUrl}}/api/channel/:channelId/urls?sort=hr&perPage=5&page=1",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"api",
-														"channel",
-														":channelId",
-														"urls"
-													],
-													"query": [
-														{
-															"key": "sort",
-															"value": "hr"
-														},
-														{
-															"key": "perPage",
-															"value": "5"
-														},
-														{
-															"key": "page",
-															"value": "1"
-														}
-													],
-													"variable": [
-														{
-															"key": "protocol",
-															"value": "{{protocol}}",
-															"description": " (This can only be one of http,https)"
-														},
-														{
-															"key": "environment",
-															"value": "{{environment}}"
-														},
-														{
-															"key": "channelId",
-															"value": "-43192755",
-															"description": "(Required) Id Channel"
-														}
-													]
-												}
-											},
-											"status": "Unauthorized",
-											"code": 401,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "application/json"
-												}
-											],
-											"cookie": [],
-											"body": "{\n \"code\": 401,\n \"message\": \"Expired JWT Token\"\n}"
-										},
-										{
-											"name": "Access Denied",
-											"originalRequest": {
-												"method": "GET",
-												"header": [
-													{
-														"description": "Added as a part of security scheme: bearer",
-														"key": "Authorization",
-														"value": "Bearer <token>"
-													}
-												],
-												"url": {
-													"raw": "{{baseUrl}}/api/channel/:channelId/urls?sort=hr&perPage=5&page=1",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"api",
-														"channel",
-														":channelId",
-														"urls"
-													],
-													"query": [
-														{
-															"key": "sort",
-															"value": "hr"
-														},
-														{
-															"key": "perPage",
-															"value": "5"
-														},
-														{
-															"key": "page",
-															"value": "1"
-														}
-													],
-													"variable": [
-														{
-															"key": "protocol",
-															"value": "{{protocol}}",
-															"description": " (This can only be one of http,https)"
-														},
-														{
-															"key": "environment",
-															"value": "{{environment}}"
-														},
-														{
-															"key": "channelId",
-															"value": "-43192755",
-															"description": "(Required) Id Channel"
-														}
-													]
-												}
-											},
-											"status": "Forbidden",
-											"code": 403,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "application/json"
-												}
-											],
-											"cookie": [],
-											"body": "{\n \"code\": 403,\n \"message\": \"Access Denied.\"\n}"
-										},
-										{
-											"name": "Returned when the Item is not found",
-											"originalRequest": {
-												"method": "GET",
-												"header": [
-													{
-														"description": "Added as a part of security scheme: bearer",
-														"key": "Authorization",
-														"value": "Bearer <token>"
-													}
-												],
-												"url": {
-													"raw": "{{baseUrl}}/api/channel/:channelId/urls?sort=hr&perPage=5&page=1",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"api",
-														"channel",
-														":channelId",
-														"urls"
-													],
-													"query": [
-														{
-															"key": "sort",
-															"value": "hr"
-														},
-														{
-															"key": "perPage",
-															"value": "5"
-														},
-														{
-															"key": "page",
-															"value": "1"
-														}
-													],
-													"variable": [
-														{
-															"key": "protocol",
-															"value": "{{protocol}}",
-															"description": " (This can only be one of http,https)"
-														},
-														{
-															"key": "environment",
-															"value": "{{environment}}"
-														},
-														{
-															"key": "channelId",
-															"value": "-43192755",
-															"description": "(Required) Id Channel"
-														}
-													]
-												}
-											},
-											"status": "Not Found",
-											"code": 404,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Content-Type",
-													"value": "application/json"
-												}
-											],
-											"cookie": [],
-											"body": "{\n \"code\": 404,\n \"messages\": \"Item not found.\"\n}"
 										}
 									]
 								}
@@ -13458,255 +13768,6 @@
 							],
 							"cookie": [],
 							"body": ""
-						}
-					]
-				},
-				{
-					"name": "Returns users.",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200, response is json\", function () {",
-									"    pm.response.to.have.status(200);",
-									"    pm.response.to.be.json;",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/api/users?perPage=5&page=1",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"users"
-							],
-							"query": [
-								{
-									"key": "search",
-									"value": "aute amet",
-									"description": "Values that need to be considered for search",
-									"disabled": true
-								},
-								{
-									"key": "perPage",
-									"value": "5",
-									"description": "(Required) Count items in page"
-								},
-								{
-									"key": "page",
-									"value": "1",
-									"description": "(Required) Numeric page"
-								}
-							],
-							"variable": [
-								{
-									"key": "protocol",
-									"value": "{{protocol}}",
-									"description": " (This can only be one of http,https)"
-								},
-								{
-									"key": "environment",
-									"value": "{{environment}}"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Returns Users list.",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"description": "Added as a part of security scheme: bearer",
-										"key": "Authorization",
-										"value": "Bearer <token>"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/api/users?search=aute amet&perPage=5&page=1",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"api",
-										"users"
-									],
-									"query": [
-										{
-											"key": "search",
-											"value": "aute amet"
-										},
-										{
-											"key": "perPage",
-											"value": "5"
-										},
-										{
-											"key": "page",
-											"value": "1"
-										}
-									],
-									"variable": [
-										{
-											"key": "protocol",
-											"value": "{{protocol}}",
-											"description": " (This can only be one of http,https)"
-										},
-										{
-											"key": "environment",
-											"value": "{{environment}}"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								}
-							],
-							"cookie": [],
-							"body": "{}"
-						},
-						{
-							"name": "Unauthorized",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"description": "Added as a part of security scheme: bearer",
-										"key": "Authorization",
-										"value": "Bearer <token>"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/api/users?search=aute amet&perPage=5&page=1",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"api",
-										"users"
-									],
-									"query": [
-										{
-											"key": "search",
-											"value": "aute amet"
-										},
-										{
-											"key": "perPage",
-											"value": "5"
-										},
-										{
-											"key": "page",
-											"value": "1"
-										}
-									],
-									"variable": [
-										{
-											"key": "protocol",
-											"value": "{{protocol}}",
-											"description": " (This can only be one of http,https)"
-										},
-										{
-											"key": "environment",
-											"value": "{{environment}}"
-										}
-									]
-								}
-							},
-							"status": "Unauthorized",
-							"code": 401,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								}
-							],
-							"cookie": [],
-							"body": "{\n \"code\": 401,\n \"message\": \"Expired JWT Token\"\n}"
-						},
-						{
-							"name": "Access Denied",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"description": "Added as a part of security scheme: bearer",
-										"key": "Authorization",
-										"value": "Bearer <token>"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/api/users?search=aute amet&perPage=5&page=1",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"api",
-										"users"
-									],
-									"query": [
-										{
-											"key": "search",
-											"value": "aute amet"
-										},
-										{
-											"key": "perPage",
-											"value": "5"
-										},
-										{
-											"key": "page",
-											"value": "1"
-										}
-									],
-									"variable": [
-										{
-											"key": "protocol",
-											"value": "{{protocol}}",
-											"description": " (This can only be one of http,https)"
-										},
-										{
-											"key": "environment",
-											"value": "{{environment}}"
-										}
-									]
-								}
-							},
-							"status": "Forbidden",
-							"code": 403,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								}
-							],
-							"cookie": [],
-							"body": "{\n \"code\": 403,\n \"message\": \"Access Denied.\"\n}"
 						}
 					]
 				},
