@@ -3195,8 +3195,8 @@
 													"pm.test(\"Status code is 200, response is json\", function () {",
 													"    pm.response.to.have.status(200);",
 													"    pm.response.to.be.json;",
-													"    var jsonData = pm.response.json();",
-													"    pm.globals.set(\"User_id\", jsonData.items[0].id);",
+													"    // var jsonData = pm.response.json();",
+													"    // pm.globals.set(\"User_id\", jsonData.items[0].id);",
 													"});"
 												],
 												"type": "text/javascript"
@@ -4260,12 +4260,9 @@
 											"pm.test(\"Status code is 201, response is json\", function () {",
 											"    pm.response.to.have.status(201);",
 											"    pm.response.to.be.json;",
-											"",
-											"});",
-											"",
-											"// postman.setNextRequest('Delete user by ID.');",
-											"",
-											""
+											"    var jsonData = pm.response.json();",
+											"    pm.globals.set(\"User_id\", jsonData.id);",
+											"});"
 										],
 										"type": "text/javascript"
 									}
@@ -4291,7 +4288,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"first_name\": \"maykl10\",\n    \"last_name\": \"born-04\",\n    \"password\": \"1111\",\n    \"email\": \"maykl-110@uuu.by\",\n    \"roles\": [\n        \"ROLE_ADMIN\"\n    ]\n}",
+									"raw": "{\n    \"first_name\": \"maykl101\",\n    \"last_name\": \"born-04\",\n    \"password\": \"1111\",\n    \"email\": \"{{$randomExampleEmail}}\",\n    \"roles\": [\n        \"ROLE_ADMIN\"\n    ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -13008,13 +13005,27 @@
 						},
 						{
 							"name": "Create Product.",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200, response is json\", function () {",
+											"    pm.response.to.have.status(200);",
+											"    pm.response.to.be.json;",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"auth": {
 									"type": "bearer",
 									"bearer": [
 										{
 											"key": "token",
-											"value": "<Bearer Token>",
+											"value": "{{TOKEN}}",
 											"type": "string"
 										}
 									]
