@@ -25,6 +25,8 @@
 											"pm.test(\"Status code is 200, response is json\", function () {",
 											"    pm.response.to.have.status(200);",
 											"    pm.response.to.be.json;",
+											"    var jsonData = pm.response.json();",
+											"    pm.globals.set(\"stream-services\", jsonData[\"auto\"]);",
 											"});"
 										],
 										"type": "text/javascript"
@@ -120,6 +122,8 @@
 											"pm.test(\"Status code is 200, response is json\", function () {",
 											"    pm.response.to.have.status(200);",
 											"    pm.response.to.be.json;",
+											"    var jsonData = pm.response.json();",
+											"    pm.globals.set(\"bitrate\", jsonData[2500]);",
 											"});"
 										],
 										"type": "text/javascript"
@@ -215,6 +219,8 @@
 											"pm.test(\"Status code is 200, response is json\", function () {",
 											"    pm.response.to.have.status(200);",
 											"    pm.response.to.be.json;",
+											"    var jsonData = pm.response.json();",
+											"    pm.globals.set(\"stream-standard\", jsonData[\"dash_hevc\"]);",
 											"});"
 										],
 										"type": "text/javascript"
@@ -296,6 +302,8 @@
 											"pm.test(\"Status code is 200, response is json\", function () {",
 											"    pm.response.to.have.status(200);",
 											"    pm.response.to.be.json;",
+											"    var jsonData = pm.response.json();",
+											"    pm.globals.set(\"timeshift\", jsonData[\"0\"]);",
 											"});"
 										],
 										"type": "text/javascript"
@@ -381,6 +389,8 @@
 											"pm.test(\"Status code is 200, response is json\", function () {",
 											"    pm.response.to.have.status(200);",
 											"    pm.response.to.be.json;",
+											"    var jsonData = pm.response.json();",
+											"    pm.globals.set(\"caching\", jsonData[\"1500\"]);",
 											"});"
 										],
 										"type": "text/javascript"
@@ -466,6 +476,8 @@
 											"pm.test(\"Status code is 200, response is json\", function () {",
 											"    pm.response.to.have.status(200);",
 											"    pm.response.to.be.json;",
+											"    var jsonData = pm.response.json();",
+											"    pm.globals.set(\"epg-sources\", jsonData[0].name);",
 											"});"
 										],
 										"type": "text/javascript"
@@ -561,6 +573,8 @@
 											"pm.test(\"Status code is 200, response is json\", function () {",
 											"    pm.response.to.have.status(200);",
 											"    pm.response.to.be.json;",
+											"    var jsonData = pm.response.json();",
+											"    pm.globals.set(\"channels-urls-encryption-type\", jsonData[0]);",
 											"});"
 										],
 										"type": "text/javascript"
@@ -635,6 +649,8 @@
 											"pm.test(\"Status code is 200, response is json\", function () {",
 											"    pm.response.to.have.status(200);",
 											"    pm.response.to.be.json;",
+											"    var jsonData = pm.response.json();",
+											"    pm.globals.set(\"channel-url-profiles\", jsonData[0].id);",
 											"});"
 										],
 										"type": "text/javascript"
@@ -720,6 +736,8 @@
 											"pm.test(\"Status code is 200, response is json\", function () {",
 											"    pm.response.to.have.status(200);",
 											"    pm.response.to.be.json;",
+											"    var jsonData = pm.response.json();",
+											"    pm.globals.set(\"packets-type\", jsonData[\"general\"]);",
 											"});"
 										],
 										"type": "text/javascript"
@@ -805,6 +823,8 @@
 											"pm.test(\"Status code is 200, response is json\", function () {",
 											"    pm.response.to.have.status(200);",
 											"    pm.response.to.be.json;",
+											"    var jsonData = pm.response.json();",
+											"    pm.globals.set(\"products-store\", jsonData[\"2\"]);",
 											"});"
 										],
 										"type": "text/javascript"
@@ -890,6 +910,8 @@
 											"pm.test(\"Status code is 200, response is json\", function () {",
 											"    pm.response.to.have.status(200);",
 											"    pm.response.to.be.json;",
+											"    var jsonData = pm.response.json();",
+											"    pm.globals.set(\"products-type\", jsonData[\"purchase\"]);",
 											"});"
 										],
 										"type": "text/javascript"
@@ -975,6 +997,8 @@
 											"pm.test(\"Status code is 200, response is json\", function () {",
 											"    pm.response.to.have.status(200);",
 											"    pm.response.to.be.json;",
+											"    var jsonData = pm.response.json();",
+											"    pm.globals.set(\"device-type\", jsonData[\"stb\"]);",
 											"});"
 										],
 										"type": "text/javascript"
@@ -1060,6 +1084,8 @@
 											"pm.test(\"Status code is 200, response is json\", function () {",
 											"    pm.response.to.have.status(200);",
 											"    pm.response.to.be.json;",
+											"    var jsonData = pm.response.json();",
+											"    pm.globals.set(\"device-standard\", jsonData[\"dash_hevc\"]);",
 											"});"
 										],
 										"type": "text/javascript"
@@ -1145,6 +1171,8 @@
 											"pm.test(\"Status code is 200, response is json\", function () {",
 											"    pm.response.to.have.status(200);",
 											"    pm.response.to.be.json;",
+											"    var jsonData = pm.response.json();",
+											"    pm.globals.set(\"geotargeting-action\", jsonData[\"allow\"]);",
 											"});"
 										],
 										"type": "text/javascript"
