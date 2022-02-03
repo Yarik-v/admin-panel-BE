@@ -123,7 +123,7 @@
 											"    pm.response.to.have.status(200);",
 											"    pm.response.to.be.json;",
 											"    var jsonData = pm.response.json();",
-											"    pm.globals.set(\"bitrate\", jsonData[2500]);",
+											"    pm.globals.set(\"bitrate\", Object.keys(jsonData).pop());",
 											"});"
 										],
 										"type": "text/javascript"
@@ -1085,7 +1085,7 @@
 											"    pm.response.to.have.status(200);",
 											"    pm.response.to.be.json;",
 											"    var jsonData = pm.response.json();",
-											"    pm.globals.set(\"device-standard\", jsonData[\"dash_hevc\"]);",
+											"    pm.globals.set(\"device-standard\", jsonData[\"\"]);",
 											"});"
 										],
 										"type": "text/javascript"
@@ -10703,6 +10703,290 @@
 							"name": "{id}",
 							"item": [
 								{
+									"name": "Create Packet.",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200, response is json\", function () {",
+													"    pm.response.to.have.status(200);",
+													"    pm.response.to.be.json;",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"{{$randomNameSuffix}}\",\n  \"sort\": 0,\n  \"archive_allow\": true,\n  \"vod_allow\": true,\n  \"tntpremier_allow\": true,\n  \"kinopoisk_allow\": true,\n  \"pamg_allow\": true,\n  \"okkotv_allow\": true,\n  \"filmua_allow\": true,\n  \"moretv_allow\": true,\n  \"litresru_allow\": true,\n  \"start_film_allow\": true,\n  \"start_film_payable\": 0,\n  \"megogo_allow\": true,\n  \"ivi_allow\": true,\n  \"geot_disable\": true,\n  \"max_sessions\": 1,\n  \"sess_ip_reject\": true,\n  \"def_bitrate\": 0,\n  \"def_server\": \"string\",\n  \"status\": true,\n  \"type\": \"general\",\n  \"profiles\": [\n    1\n  ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/packet",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"packet"
+											],
+											"variable": [
+												{
+													"key": "protocol",
+													"value": "{{protocol}}",
+													"description": " (This can only be one of http,https)"
+												},
+												{
+													"key": "environment",
+													"value": "{{environment}}"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Return Packet data.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"name\": \"cillum in\",\n    \"sort\": 48467116,\n    \"archive_allow\": true,\n    \"vod_allow\": false,\n    \"tntpremier_allow\": false,\n    \"kinopoisk_allow\": true,\n    \"pamg_allow\": true,\n    \"okkotv_allow\": false,\n    \"filmua_allow\": false,\n    \"moretv_allow\": false,\n    \"litresru_allow\": false,\n    \"start_film_allow\": true,\n    \"start_film_payable\": 88541490,\n    \"megogo_allow\": true,\n    \"ivi_allow\": false,\n    \"geot_disable\": true,\n    \"max_sessions\": 88259613,\n    \"sess_ip_reject\": false,\n    \"def_bitrate\": 33246403,\n    \"def_server\": \"labore et \",\n    \"status\": false,\n    \"type\": \"general\",\n    \"profiles\": [\n        14473532,\n        40559749\n    ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/packet",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"packet"
+													],
+													"variable": [
+														{
+															"key": "protocol",
+															"value": "{{protocol}}",
+															"description": " (This can only be one of http,https)"
+														},
+														{
+															"key": "environment",
+															"value": "{{environment}}"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"id\": 84656352,\n \"name\": \"culpa \",\n \"sort\": -88949700,\n \"archive_allow\": true,\n \"vod_allow\": false,\n \"tntpremier_allow\": true,\n \"kinopoisk_allow\": false,\n \"pamg_allow\": true,\n \"okkotv_allow\": true,\n \"filmua_allow\": true,\n \"moretv_allow\": false,\n \"litresru_allow\": true,\n \"start_film_allow\": false,\n \"start_film_payable\": -96147133,\n \"megogo_allow\": true,\n \"ivi_allow\": true,\n \"geot_disable\": true,\n \"max_sessions\": -45903289,\n \"sess_ip_reject\": true,\n \"def_bitrate\": 57132255,\n \"def_server\": \"ipsum non ex Lorem\",\n \"status\": false,\n \"type\": \"general\",\n \"profiles\": [\n  -48511851,\n  62757489\n ]\n}"
+										},
+										{
+											"name": "Returned when bad request",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"name\": \"cillum in\",\n    \"sort\": 48467116,\n    \"archive_allow\": true,\n    \"vod_allow\": false,\n    \"tntpremier_allow\": false,\n    \"kinopoisk_allow\": true,\n    \"pamg_allow\": true,\n    \"okkotv_allow\": false,\n    \"filmua_allow\": false,\n    \"moretv_allow\": false,\n    \"litresru_allow\": false,\n    \"start_film_allow\": true,\n    \"start_film_payable\": 88541490,\n    \"megogo_allow\": true,\n    \"ivi_allow\": false,\n    \"geot_disable\": true,\n    \"max_sessions\": 88259613,\n    \"sess_ip_reject\": false,\n    \"def_bitrate\": 33246403,\n    \"def_server\": \"labore et \",\n    \"status\": false,\n    \"type\": \"general\",\n    \"profiles\": [\n        14473532,\n        40559749\n    ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/packet",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"packet"
+													],
+													"variable": [
+														{
+															"key": "protocol",
+															"value": "{{protocol}}",
+															"description": " (This can only be one of http,https)"
+														},
+														{
+															"key": "environment",
+															"value": "{{environment}}"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"Validation\",\n \"title\": \"Bad Request\",\n \"messages\": {\n  \"propertyPath\": \"eiusmod reprehenderit et fugiat\",\n  \"message\": \"mollit velit laboris reprehenderit adipisicing\"\n }\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"name\": \"cillum in\",\n    \"sort\": 48467116,\n    \"archive_allow\": true,\n    \"vod_allow\": false,\n    \"tntpremier_allow\": false,\n    \"kinopoisk_allow\": true,\n    \"pamg_allow\": true,\n    \"okkotv_allow\": false,\n    \"filmua_allow\": false,\n    \"moretv_allow\": false,\n    \"litresru_allow\": false,\n    \"start_film_allow\": true,\n    \"start_film_payable\": 88541490,\n    \"megogo_allow\": true,\n    \"ivi_allow\": false,\n    \"geot_disable\": true,\n    \"max_sessions\": 88259613,\n    \"sess_ip_reject\": false,\n    \"def_bitrate\": 33246403,\n    \"def_server\": \"labore et \",\n    \"status\": false,\n    \"type\": \"general\",\n    \"profiles\": [\n        14473532,\n        40559749\n    ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/packet",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"packet"
+													],
+													"variable": [
+														{
+															"key": "protocol",
+															"value": "{{protocol}}",
+															"description": " (This can only be one of http,https)"
+														},
+														{
+															"key": "environment",
+															"value": "{{environment}}"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"code\": 401,\n \"message\": \"Expired JWT Token\"\n}"
+										},
+										{
+											"name": "Access Denied",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"name\": \"cillum in\",\n    \"sort\": 48467116,\n    \"archive_allow\": true,\n    \"vod_allow\": false,\n    \"tntpremier_allow\": false,\n    \"kinopoisk_allow\": true,\n    \"pamg_allow\": true,\n    \"okkotv_allow\": false,\n    \"filmua_allow\": false,\n    \"moretv_allow\": false,\n    \"litresru_allow\": false,\n    \"start_film_allow\": true,\n    \"start_film_payable\": 88541490,\n    \"megogo_allow\": true,\n    \"ivi_allow\": false,\n    \"geot_disable\": true,\n    \"max_sessions\": 88259613,\n    \"sess_ip_reject\": false,\n    \"def_bitrate\": 33246403,\n    \"def_server\": \"labore et \",\n    \"status\": false,\n    \"type\": \"general\",\n    \"profiles\": [\n        14473532,\n        40559749\n    ]\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/packet",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"packet"
+													],
+													"variable": [
+														{
+															"key": "protocol",
+															"value": "{{protocol}}",
+															"description": " (This can only be one of http,https)"
+														},
+														{
+															"key": "environment",
+															"value": "{{environment}}"
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"code\": 403,\n \"message\": \"Access Denied.\"\n}"
+										}
+									]
+								},
+								{
 									"name": "Returns list Packets.",
 									"event": [
 										{
@@ -10713,7 +10997,7 @@
 													"    pm.response.to.have.status(200);",
 													"    pm.response.to.be.json;",
 													"    var jsonData = pm.response.json();",
-													"    pm.globals.set(\"packets_id\", jsonData.items[0].id);",
+													"    pm.globals.set(\"packets_id\", jsonData.items[1].id);",
 													"});"
 												],
 												"type": "text/javascript"
@@ -11325,7 +11609,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"name\": \"cillum in\",\n    \"sort\": 48467116,\n    \"archive_allow\": true,\n    \"vod_allow\": false,\n    \"tntpremier_allow\": false,\n    \"kinopoisk_allow\": true,\n    \"pamg_allow\": true,\n    \"okkotv_allow\": false,\n    \"filmua_allow\": false,\n    \"moretv_allow\": false,\n    \"litresru_allow\": false,\n    \"start_film_allow\": true,\n    \"start_film_payable\": 88541490,\n    \"megogo_allow\": true,\n    \"ivi_allow\": false,\n    \"geot_disable\": true,\n    \"max_sessions\": 88259613,\n    \"sess_ip_reject\": false,\n    \"def_bitrate\": 33246403,\n    \"def_server\": \"labore et \",\n    \"status\": false,\n    \"type\": \"general\",\n    \"profiles\": [\n        14473532,\n        40559749\n    ]\n}",
+											"raw": "{\n    \"id\": 1111,\n    \"name\": \"Премиум\",\n    \"sort\": 3,\n    \"archive_allow\": true,\n    \"vod_allow\": true,\n    \"tntpremier_allow\": true,\n    \"kinopoisk_allow\": false,\n    \"pamg_allow\": true,\n    \"okkotv_allow\": true,\n    \"filmua_allow\": true,\n    \"moretv_allow\": true,\n    \"litresru_allow\": true,\n    \"start_film_allow\": true,\n    \"start_film_payable\": 0,\n    \"megogo_allow\": true,\n    \"ivi_allow\": true,\n    \"geot_disable\": false,\n    \"max_sessions\": 3,\n    \"sess_ip_reject\": true,\n    \"def_bitrate\": {{bitrate}},\n    \"def_server\": null,\n    \"status\": true,\n    \"type\": \"general\",\n    \"profiles\": [\n        1,\n        3,\n        5,\n        7,\n        9,\n        13\n    ]\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -11345,7 +11629,7 @@
 											"variable": [
 												{
 													"key": "id",
-													"value": "265",
+													"value": "{{packets_id}}",
 													"description": "(Required) Id Packet"
 												}
 											]
@@ -11593,290 +11877,6 @@
 											"body": "{\n \"code\": 404,\n \"messages\": \"Item not found.\"\n}"
 										}
 									]
-								}
-							]
-						},
-						{
-							"name": "Create Packet.",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200, response is json\", function () {",
-											"    pm.response.to.have.status(200);",
-											"    pm.response.to.be.json;",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{TOKEN}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"name\": \"laboris Ut ad consequat\",\n    \"sort\": 10762149,\n    \"archive_allow\": true,\n    \"vod_allow\": false,\n    \"tntpremier_allow\": false,\n    \"kinopoisk_allow\": false,\n    \"pamg_allow\": true,\n    \"okkotv_allow\": false,\n    \"filmua_allow\": false,\n    \"moretv_allow\": true,\n    \"litresru_allow\": false,\n    \"start_film_allow\": false,\n    \"start_film_payable\": 35986813,\n    \"megogo_allow\": true,\n    \"ivi_allow\": true,\n    \"geot_disable\": false,\n    \"max_sessions\": 27500609,\n    \"sess_ip_reject\": false,\n    \"def_bitrate\": 85314518,\n    \"def_server\": \"quis laborum et r\",\n    \"status\": true,\n    \"type\": \"develop\",\n    \"profiles\": [\n        97104462,\n        63294934\n    ]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl}}/api/packet",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"api",
-										"packet"
-									],
-									"variable": [
-										{
-											"key": "protocol",
-											"value": "{{protocol}}",
-											"description": " (This can only be one of http,https)"
-										},
-										{
-											"key": "environment",
-											"value": "{{environment}}"
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "Return Packet data.",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: bearer",
-												"key": "Authorization",
-												"value": "Bearer <token>"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"name\": \"cillum in\",\n    \"sort\": 48467116,\n    \"archive_allow\": true,\n    \"vod_allow\": false,\n    \"tntpremier_allow\": false,\n    \"kinopoisk_allow\": true,\n    \"pamg_allow\": true,\n    \"okkotv_allow\": false,\n    \"filmua_allow\": false,\n    \"moretv_allow\": false,\n    \"litresru_allow\": false,\n    \"start_film_allow\": true,\n    \"start_film_payable\": 88541490,\n    \"megogo_allow\": true,\n    \"ivi_allow\": false,\n    \"geot_disable\": true,\n    \"max_sessions\": 88259613,\n    \"sess_ip_reject\": false,\n    \"def_bitrate\": 33246403,\n    \"def_server\": \"labore et \",\n    \"status\": false,\n    \"type\": \"general\",\n    \"profiles\": [\n        14473532,\n        40559749\n    ]\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/api/packet",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"api",
-												"packet"
-											],
-											"variable": [
-												{
-													"key": "protocol",
-													"value": "{{protocol}}",
-													"description": " (This can only be one of http,https)"
-												},
-												{
-													"key": "environment",
-													"value": "{{environment}}"
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"body": "{\n \"id\": 84656352,\n \"name\": \"culpa \",\n \"sort\": -88949700,\n \"archive_allow\": true,\n \"vod_allow\": false,\n \"tntpremier_allow\": true,\n \"kinopoisk_allow\": false,\n \"pamg_allow\": true,\n \"okkotv_allow\": true,\n \"filmua_allow\": true,\n \"moretv_allow\": false,\n \"litresru_allow\": true,\n \"start_film_allow\": false,\n \"start_film_payable\": -96147133,\n \"megogo_allow\": true,\n \"ivi_allow\": true,\n \"geot_disable\": true,\n \"max_sessions\": -45903289,\n \"sess_ip_reject\": true,\n \"def_bitrate\": 57132255,\n \"def_server\": \"ipsum non ex Lorem\",\n \"status\": false,\n \"type\": \"general\",\n \"profiles\": [\n  -48511851,\n  62757489\n ]\n}"
-								},
-								{
-									"name": "Returned when bad request",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: bearer",
-												"key": "Authorization",
-												"value": "Bearer <token>"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"name\": \"cillum in\",\n    \"sort\": 48467116,\n    \"archive_allow\": true,\n    \"vod_allow\": false,\n    \"tntpremier_allow\": false,\n    \"kinopoisk_allow\": true,\n    \"pamg_allow\": true,\n    \"okkotv_allow\": false,\n    \"filmua_allow\": false,\n    \"moretv_allow\": false,\n    \"litresru_allow\": false,\n    \"start_film_allow\": true,\n    \"start_film_payable\": 88541490,\n    \"megogo_allow\": true,\n    \"ivi_allow\": false,\n    \"geot_disable\": true,\n    \"max_sessions\": 88259613,\n    \"sess_ip_reject\": false,\n    \"def_bitrate\": 33246403,\n    \"def_server\": \"labore et \",\n    \"status\": false,\n    \"type\": \"general\",\n    \"profiles\": [\n        14473532,\n        40559749\n    ]\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/api/packet",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"api",
-												"packet"
-											],
-											"variable": [
-												{
-													"key": "protocol",
-													"value": "{{protocol}}",
-													"description": " (This can only be one of http,https)"
-												},
-												{
-													"key": "environment",
-													"value": "{{environment}}"
-												}
-											]
-										}
-									},
-									"status": "Bad Request",
-									"code": 400,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"body": "{\n \"type\": \"Validation\",\n \"title\": \"Bad Request\",\n \"messages\": {\n  \"propertyPath\": \"eiusmod reprehenderit et fugiat\",\n  \"message\": \"mollit velit laboris reprehenderit adipisicing\"\n }\n}"
-								},
-								{
-									"name": "Unauthorized",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: bearer",
-												"key": "Authorization",
-												"value": "Bearer <token>"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"name\": \"cillum in\",\n    \"sort\": 48467116,\n    \"archive_allow\": true,\n    \"vod_allow\": false,\n    \"tntpremier_allow\": false,\n    \"kinopoisk_allow\": true,\n    \"pamg_allow\": true,\n    \"okkotv_allow\": false,\n    \"filmua_allow\": false,\n    \"moretv_allow\": false,\n    \"litresru_allow\": false,\n    \"start_film_allow\": true,\n    \"start_film_payable\": 88541490,\n    \"megogo_allow\": true,\n    \"ivi_allow\": false,\n    \"geot_disable\": true,\n    \"max_sessions\": 88259613,\n    \"sess_ip_reject\": false,\n    \"def_bitrate\": 33246403,\n    \"def_server\": \"labore et \",\n    \"status\": false,\n    \"type\": \"general\",\n    \"profiles\": [\n        14473532,\n        40559749\n    ]\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/api/packet",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"api",
-												"packet"
-											],
-											"variable": [
-												{
-													"key": "protocol",
-													"value": "{{protocol}}",
-													"description": " (This can only be one of http,https)"
-												},
-												{
-													"key": "environment",
-													"value": "{{environment}}"
-												}
-											]
-										}
-									},
-									"status": "Unauthorized",
-									"code": 401,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"body": "{\n \"code\": 401,\n \"message\": \"Expired JWT Token\"\n}"
-								},
-								{
-									"name": "Access Denied",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: bearer",
-												"key": "Authorization",
-												"value": "Bearer <token>"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"name\": \"cillum in\",\n    \"sort\": 48467116,\n    \"archive_allow\": true,\n    \"vod_allow\": false,\n    \"tntpremier_allow\": false,\n    \"kinopoisk_allow\": true,\n    \"pamg_allow\": true,\n    \"okkotv_allow\": false,\n    \"filmua_allow\": false,\n    \"moretv_allow\": false,\n    \"litresru_allow\": false,\n    \"start_film_allow\": true,\n    \"start_film_payable\": 88541490,\n    \"megogo_allow\": true,\n    \"ivi_allow\": false,\n    \"geot_disable\": true,\n    \"max_sessions\": 88259613,\n    \"sess_ip_reject\": false,\n    \"def_bitrate\": 33246403,\n    \"def_server\": \"labore et \",\n    \"status\": false,\n    \"type\": \"general\",\n    \"profiles\": [\n        14473532,\n        40559749\n    ]\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/api/packet",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"api",
-												"packet"
-											],
-											"variable": [
-												{
-													"key": "protocol",
-													"value": "{{protocol}}",
-													"description": " (This can only be one of http,https)"
-												},
-												{
-													"key": "environment",
-													"value": "{{environment}}"
-												}
-											]
-										}
-									},
-									"status": "Forbidden",
-									"code": 403,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"body": "{\n \"code\": 403,\n \"message\": \"Access Denied.\"\n}"
 								}
 							]
 						}
@@ -12476,14 +12476,312 @@
 									]
 								},
 								{
-									"name": "Update Product data.",
+									"name": "Create Product.",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 201, response is json\", function () {",
+													"    pm.response.to.have.status(201);",
+													"    pm.response.to.be.json;",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"request": {
 										"auth": {
 											"type": "bearer",
 											"bearer": [
 												{
 													"key": "token",
-													"value": "<Bearer Token>",
+													"value": "{{TOKEN}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": \"{{$randomExampleEmail}}\",\n    \"store\": 3,\n    \"type\": \"purchase\",\n    \"period\": 365,\n    \"packet_id\": 270,\n    \"country\": [\n       \"{{$randomCountryCode}}\"\n    ],\n    \"expired_at\": \"2023-05-04 09:08:56\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/product",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"product"
+											],
+											"variable": [
+												{
+													"key": "protocol",
+													"value": "{{protocol}}",
+													"description": " (This can only be one of http,https)"
+												},
+												{
+													"key": "environment",
+													"value": "{{environment}}"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Return Product data.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"id\": \"pariatur laborum ex quis\",\n    \"store\": 52370459,\n    \"type\": \"purchase\",\n    \"period\": 89375025,\n    \"packet_id\": 87974744,\n    \"country\": [\n        \"co\",\n        \"in\"\n    ],\n    \"expired_at\": \"ut elit\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/product",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"product"
+													],
+													"variable": [
+														{
+															"key": "protocol",
+															"value": "{{protocol}}",
+															"description": " (This can only be one of http,https)"
+														},
+														{
+															"key": "environment",
+															"value": "{{environment}}"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"id\": \"qui officia Lorem aliquip\",\n \"store\": 28164576,\n \"type\": \"subscription\",\n \"period\": -37989733,\n \"packet_id\": 59714186,\n \"country\": [\n  \"irure\",\n  \"mollit fugiat\"\n ],\n \"expired_at\": \"labore cupidatat incididunt aliqua\"\n}"
+										},
+										{
+											"name": "Returned when bad request",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"id\": \"pariatur laborum ex quis\",\n    \"store\": 52370459,\n    \"type\": \"purchase\",\n    \"period\": 89375025,\n    \"packet_id\": 87974744,\n    \"country\": [\n        \"co\",\n        \"in\"\n    ],\n    \"expired_at\": \"ut elit\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/product",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"product"
+													],
+													"variable": [
+														{
+															"key": "protocol",
+															"value": "{{protocol}}",
+															"description": " (This can only be one of http,https)"
+														},
+														{
+															"key": "environment",
+															"value": "{{environment}}"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"type\": \"Validation\",\n \"title\": \"Bad Request\",\n \"messages\": {\n  \"propertyPath\": \"eiusmod reprehenderit et fugiat\",\n  \"message\": \"mollit velit laboris reprehenderit adipisicing\"\n }\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"id\": \"pariatur laborum ex quis\",\n    \"store\": 52370459,\n    \"type\": \"purchase\",\n    \"period\": 89375025,\n    \"packet_id\": 87974744,\n    \"country\": [\n        \"co\",\n        \"in\"\n    ],\n    \"expired_at\": \"ut elit\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/product",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"product"
+													],
+													"variable": [
+														{
+															"key": "protocol",
+															"value": "{{protocol}}",
+															"description": " (This can only be one of http,https)"
+														},
+														{
+															"key": "environment",
+															"value": "{{environment}}"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"code\": 401,\n \"message\": \"Expired JWT Token\"\n}"
+										},
+										{
+											"name": "Access Denied",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: bearer",
+														"key": "Authorization",
+														"value": "Bearer <token>"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"id\": \"pariatur laborum ex quis\",\n    \"store\": 52370459,\n    \"type\": \"purchase\",\n    \"period\": 89375025,\n    \"packet_id\": 87974744,\n    \"country\": [\n        \"co\",\n        \"in\"\n    ],\n    \"expired_at\": \"ut elit\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/product",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"product"
+													],
+													"variable": [
+														{
+															"key": "protocol",
+															"value": "{{protocol}}",
+															"description": " (This can only be one of http,https)"
+														},
+														{
+															"key": "environment",
+															"value": "{{environment}}"
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"code\": 403,\n \"message\": \"Access Denied.\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Update Product data.",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200, response is json\", function () {",
+													"    pm.response.to.have.status(200);",
+													"    pm.response.to.be.json;",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{TOKEN}}",
 													"type": "string"
 												}
 											]
@@ -12497,7 +12795,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"store\": 84196630,\n    \"type\": \"purchase\",\n    \"period\": 14584611,\n    \"packet_id\": 6676336,\n    \"country\": [\n        \"Ex\",\n        \"co\"\n    ],\n    \"expired_at\": \"qui\"\n}",
+											"raw": "{\n    \"store\": 3,\n    \"type\": \"purchase\",\n    \"period\": 365,\n    \"packet_id\": {{packets_id}},\n    \"country\": [\n       \"{{$randomCountryCode}}\"\n    ],\n    \"expired_at\": \"2021-05-04 09:08:56\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -12516,17 +12814,8 @@
 											],
 											"variable": [
 												{
-													"key": "protocol",
-													"value": "{{protocol}}",
-													"description": " (This can only be one of http,https)"
-												},
-												{
-													"key": "environment",
-													"value": "{{environment}}"
-												},
-												{
 													"key": "id",
-													"value": "aute amet",
+													"value": "{{products_id}}",
 													"description": "(Required) Id Product"
 												}
 											]
@@ -13028,290 +13317,6 @@
 											"body": "{\n \"code\": 404,\n \"messages\": \"Item not found.\"\n}"
 										}
 									]
-								}
-							]
-						},
-						{
-							"name": "Create Product.",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Status code is 200, response is json\", function () {",
-											"    pm.response.to.have.status(200);",
-											"    pm.response.to.be.json;",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{TOKEN}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"id\": \"in pariatur\",\n    \"store\": 4656403,\n    \"type\": \"purchase\",\n    \"period\": 2310490,\n    \"packet_id\": 12110170,\n    \"country\": [\n        \"do\",\n        \"vo\"\n    ],\n    \"expired_at\": \"ea veniam eiusmod Duis\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl}}/api/product",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"api",
-										"product"
-									],
-									"variable": [
-										{
-											"key": "protocol",
-											"value": "{{protocol}}",
-											"description": " (This can only be one of http,https)"
-										},
-										{
-											"key": "environment",
-											"value": "{{environment}}"
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "Return Product data.",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: bearer",
-												"key": "Authorization",
-												"value": "Bearer <token>"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"id\": \"pariatur laborum ex quis\",\n    \"store\": 52370459,\n    \"type\": \"purchase\",\n    \"period\": 89375025,\n    \"packet_id\": 87974744,\n    \"country\": [\n        \"co\",\n        \"in\"\n    ],\n    \"expired_at\": \"ut elit\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/api/product",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"api",
-												"product"
-											],
-											"variable": [
-												{
-													"key": "protocol",
-													"value": "{{protocol}}",
-													"description": " (This can only be one of http,https)"
-												},
-												{
-													"key": "environment",
-													"value": "{{environment}}"
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"body": "{\n \"id\": \"qui officia Lorem aliquip\",\n \"store\": 28164576,\n \"type\": \"subscription\",\n \"period\": -37989733,\n \"packet_id\": 59714186,\n \"country\": [\n  \"irure\",\n  \"mollit fugiat\"\n ],\n \"expired_at\": \"labore cupidatat incididunt aliqua\"\n}"
-								},
-								{
-									"name": "Returned when bad request",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: bearer",
-												"key": "Authorization",
-												"value": "Bearer <token>"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"id\": \"pariatur laborum ex quis\",\n    \"store\": 52370459,\n    \"type\": \"purchase\",\n    \"period\": 89375025,\n    \"packet_id\": 87974744,\n    \"country\": [\n        \"co\",\n        \"in\"\n    ],\n    \"expired_at\": \"ut elit\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/api/product",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"api",
-												"product"
-											],
-											"variable": [
-												{
-													"key": "protocol",
-													"value": "{{protocol}}",
-													"description": " (This can only be one of http,https)"
-												},
-												{
-													"key": "environment",
-													"value": "{{environment}}"
-												}
-											]
-										}
-									},
-									"status": "Bad Request",
-									"code": 400,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"body": "{\n \"type\": \"Validation\",\n \"title\": \"Bad Request\",\n \"messages\": {\n  \"propertyPath\": \"eiusmod reprehenderit et fugiat\",\n  \"message\": \"mollit velit laboris reprehenderit adipisicing\"\n }\n}"
-								},
-								{
-									"name": "Unauthorized",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: bearer",
-												"key": "Authorization",
-												"value": "Bearer <token>"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"id\": \"pariatur laborum ex quis\",\n    \"store\": 52370459,\n    \"type\": \"purchase\",\n    \"period\": 89375025,\n    \"packet_id\": 87974744,\n    \"country\": [\n        \"co\",\n        \"in\"\n    ],\n    \"expired_at\": \"ut elit\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/api/product",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"api",
-												"product"
-											],
-											"variable": [
-												{
-													"key": "protocol",
-													"value": "{{protocol}}",
-													"description": " (This can only be one of http,https)"
-												},
-												{
-													"key": "environment",
-													"value": "{{environment}}"
-												}
-											]
-										}
-									},
-									"status": "Unauthorized",
-									"code": 401,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"body": "{\n \"code\": 401,\n \"message\": \"Expired JWT Token\"\n}"
-								},
-								{
-									"name": "Access Denied",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: bearer",
-												"key": "Authorization",
-												"value": "Bearer <token>"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"id\": \"pariatur laborum ex quis\",\n    \"store\": 52370459,\n    \"type\": \"purchase\",\n    \"period\": 89375025,\n    \"packet_id\": 87974744,\n    \"country\": [\n        \"co\",\n        \"in\"\n    ],\n    \"expired_at\": \"ut elit\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/api/product",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"api",
-												"product"
-											],
-											"variable": [
-												{
-													"key": "protocol",
-													"value": "{{protocol}}",
-													"description": " (This can only be one of http,https)"
-												},
-												{
-													"key": "environment",
-													"value": "{{environment}}"
-												}
-											]
-										}
-									},
-									"status": "Forbidden",
-									"code": 403,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"body": "{\n \"code\": 403,\n \"message\": \"Access Denied.\"\n}"
 								}
 							]
 						}
@@ -13946,7 +13951,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"softid\": \"qui et irure nostrud\",\n    \"type\": \"application\",\n    \"descr\": \"quis\",\n    \"contact\": \"non quis dolor\",\n    \"default_streamstandard\": \"\",\n    \"ivi_config\": {\n        \"subsite_id\": -49883427,\n        \"app_version\": 47999540\n    },\n    \"start_film_config\": {\n        \"token\": \"in aute velit\"\n    },\n    \"disable_adult_channels\": true,\n    \"support_config\": {\n        \"dash\": true,\n        \"hls\": false,\n        \"udt\": true,\n        \"verimatrix\": false,\n        \"tr069\": true,\n        \"https\": false,\n        \"kartina_app\": false,\n        \"teleteka\": false,\n        \"trial_error\": true\n    },\n    \"support_source\": {\n        \"ivi\": false,\n        \"megogo\": false,\n        \"start_film\": true,\n        \"moretv\": true,\n        \"filmua\": false,\n        \"okkotv\": false,\n        \"mediateka\": false,\n        \"pamg\": true,\n        \"kinopoisk\": false,\n        \"tntpremier\": true,\n        \"litresru\": false\n    }\n}",
+											"raw": "{\n    \"softid\": \"aminoweb-ktv-001\",\n    \"type\": \"stb\",\n    \"descr\": \"Amino old web interface\",\n    \"contact\": \"{{$randomUserName}}\",\n    \"default_streamstandard\": \"{{device-standard}}\",\n    \"ivi_config\": null,\n    \"start_film_config\": null,\n    \"disable_adult_channels\": false,\n    \"support_config\": {\n        \"dash\": true,\n        \"hls\": false,\n        \"udt\": false,\n        \"verimatrix\": false,\n        \"tr069\": false,\n        \"https\": false,\n        \"kartina_app\": false,\n        \"teleteka\": false,\n        \"trial_error\": false\n    },\n    \"support_source\": {\n        \"ivi\": false,\n        \"megogo\": false,\n        \"start_film\": false,\n        \"moretv\": false,\n        \"filmua\": false,\n        \"okkotv\": false,\n        \"mediateka\": true,\n        \"pamg\": false,\n        \"kinopoisk\": false,\n        \"tntpremier\": false,\n        \"litresru\": false\n    }\n}",
 											"options": {
 												"raw": {
 													"language": "json"
