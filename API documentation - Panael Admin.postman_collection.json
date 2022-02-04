@@ -574,7 +574,7 @@
 											"    pm.response.to.have.status(200);",
 											"    pm.response.to.be.json;",
 											"    var jsonData = pm.response.json();",
-											"    pm.globals.set(\"channels-urls-encryption-type\", jsonData[0]);",
+											"    pm.globals.set(\"channels-urls-encryption-type\", jsonData[1]);",
 											"});"
 										],
 										"type": "text/javascript"
@@ -5688,6 +5688,7 @@
 											"    pm.response.to.be.json;",
 											"    var jsonData = pm.response.json();",
 											"    pm.globals.set(\"channels_id\", jsonData.items[1].id);",
+											"    // pm.globals.set(\"icon\", jsonData.items[3].icon);",
 											"});",
 											""
 										],
@@ -7185,13 +7186,27 @@
 										},
 										{
 											"name": "Update Images of Channel.",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"Status code is 200, response is json\", function () {",
+															"    pm.response.to.have.status(200);",
+															"    pm.response.to.be.json;",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
 											"request": {
 												"auth": {
 													"type": "bearer",
 													"bearer": [
 														{
 															"key": "token",
-															"value": "<Bearer Token>",
+															"value": "{{TOKEN}}",
 															"type": "string"
 														}
 													]
@@ -7205,7 +7220,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n    \"icon\": \"et do veniam enim ut\",\n    \"epg_image\": \"mollit cillum tempor laborum adipis\"\n}",
+													"raw": "{\n    \"icon\": \"{{icon}}\",\n    \"epg_image\": \"https://imaze.kartina.stream/ui/epg/epg-default.png/resize?width=192&height=192\"\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -7225,17 +7240,8 @@
 													],
 													"variable": [
 														{
-															"key": "protocol",
-															"value": "{{protocol}}",
-															"description": " (This can only be one of http,https)"
-														},
-														{
-															"key": "environment",
-															"value": "{{environment}}"
-														},
-														{
 															"key": "id",
-															"value": "-43192755",
+															"value": "{{channels_id}}",
 															"description": "(Required) Id Channel"
 														}
 													]
@@ -7789,7 +7795,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n    \"stream_src\": \"\",\n    \"need_bandwidth\": 0,\n    \"sort\": 73,\n    \"gag_url\": \"\",\n    \"http_url\": \"\"\n}",
+													"raw": "{\n    \"id\": 779,\n    \"stream_src\": \"\",\n    \"need_bandwidth\": 0,\n    \"sort\": 3,\n    \"http_url\": \"\",\n    \"gag_url\": \"\"\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -7810,7 +7816,7 @@
 													"variable": [
 														{
 															"key": "id",
-															"value": "-43192755",
+															"value": "{{channels_id}}",
 															"description": "(Required) Id Channel"
 														}
 													]
@@ -8357,7 +8363,7 @@
 												"method": "GET",
 												"header": [],
 												"url": {
-													"raw": "{{baseUrl}}/api/channel/:channelId/urls?sort=&perPage=5&page=1",
+													"raw": "{{baseUrl}}/api/channel/:channelId/urls?sort=-hr&perPage=50&page=1",
 													"host": [
 														"{{baseUrl}}"
 													],
@@ -8370,12 +8376,12 @@
 													"query": [
 														{
 															"key": "sort",
-															"value": "",
+															"value": "-hr",
 															"description": "Field by that need to be sorted"
 														},
 														{
 															"key": "perPage",
-															"value": "5",
+															"value": "50",
 															"description": "Count items in page"
 														},
 														{
@@ -8661,6 +8667,302 @@
 											]
 										},
 										{
+											"name": "Create URL of Channel.",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{TOKEN}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"hr\": 76,\n    \"id_profile\": 1,\n    \"url\": \"{{$randomUrl}}\",\n    \"status\": true,\n    \"encryption_type\": 1\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/channel/:channelId/url",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"channel",
+														":channelId",
+														"url"
+													],
+													"variable": [
+														{
+															"key": "channelId",
+															"value": "{{channels_id}}",
+															"description": "(Required) Id Channel"
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "Return URL of Channel data.",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"hr\": 32459941,\n    \"id_profile\": 79577693,\n    \"url\": \"officia quis nostrud proi\",\n    \"status\": false,\n    \"encryption_type\": -54396683,\n    \"epg_source\": \"do \"\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/channel/:channelId/url",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"channel",
+																":channelId",
+																"url"
+															],
+															"variable": [
+																{
+																	"key": "protocol",
+																	"value": "{{protocol}}",
+																	"description": " (This can only be one of http,https)"
+																},
+																{
+																	"key": "environment",
+																	"value": "{{environment}}"
+																},
+																{
+																	"key": "channelId",
+																	"value": "-43192755",
+																	"description": "(Required) Id Channel"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"id_channel\": 19851085,\n \"hr\": -83694244,\n \"url\": \"reprehenderit fugiat\",\n \"status\": false,\n \"id_profile\": -39209289,\n \"profile\": {\n  \"id\": 84784318,\n  \"title\": \"nisi minim\"\n },\n \"encryption\": {\n  \"id\": -89668851,\n  \"title\": \"laboris Lorem velit ut commodo\"\n }\n}"
+												},
+												{
+													"name": "Returned when bad request",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"hr\": 32459941,\n    \"id_profile\": 79577693,\n    \"url\": \"officia quis nostrud proi\",\n    \"status\": false,\n    \"encryption_type\": -54396683,\n    \"epg_source\": \"do \"\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/channel/:channelId/url",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"channel",
+																":channelId",
+																"url"
+															],
+															"variable": [
+																{
+																	"key": "protocol",
+																	"value": "{{protocol}}",
+																	"description": " (This can only be one of http,https)"
+																},
+																{
+																	"key": "environment",
+																	"value": "{{environment}}"
+																},
+																{
+																	"key": "channelId",
+																	"value": "-43192755",
+																	"description": "(Required) Id Channel"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"type\": \"Validation\",\n \"title\": \"Bad Request\",\n \"messages\": {\n  \"propertyPath\": \"eiusmod reprehenderit et fugiat\",\n  \"message\": \"mollit velit laboris reprehenderit adipisicing\"\n }\n}"
+												},
+												{
+													"name": "Unauthorized",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"hr\": 32459941,\n    \"id_profile\": 79577693,\n    \"url\": \"officia quis nostrud proi\",\n    \"status\": false,\n    \"encryption_type\": -54396683,\n    \"epg_source\": \"do \"\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/channel/:channelId/url",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"channel",
+																":channelId",
+																"url"
+															],
+															"variable": [
+																{
+																	"key": "protocol",
+																	"value": "{{protocol}}",
+																	"description": " (This can only be one of http,https)"
+																},
+																{
+																	"key": "environment",
+																	"value": "{{environment}}"
+																},
+																{
+																	"key": "channelId",
+																	"value": "-43192755",
+																	"description": "(Required) Id Channel"
+																}
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"code\": 401,\n \"message\": \"Expired JWT Token\"\n}"
+												},
+												{
+													"name": "Access Denied",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"description": "Added as a part of security scheme: bearer",
+																"key": "Authorization",
+																"value": "Bearer <token>"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n    \"hr\": 32459941,\n    \"id_profile\": 79577693,\n    \"url\": \"officia quis nostrud proi\",\n    \"status\": false,\n    \"encryption_type\": -54396683,\n    \"epg_source\": \"do \"\n}",
+															"options": {
+																"raw": {
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/channel/:channelId/url",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"channel",
+																":channelId",
+																"url"
+															],
+															"variable": [
+																{
+																	"key": "protocol",
+																	"value": "{{protocol}}",
+																	"description": " (This can only be one of http,https)"
+																},
+																{
+																	"key": "environment",
+																	"value": "{{environment}}"
+																},
+																{
+																	"key": "channelId",
+																	"value": "-43192755",
+																	"description": "(Required) Id Channel"
+																}
+															]
+														}
+													},
+													"status": "Forbidden",
+													"code": 403,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n \"code\": 403,\n \"message\": \"Access Denied.\"\n}"
+												}
+											]
+										},
+										{
 											"name": "Update URL of Channel.",
 											"event": [
 												{
@@ -8696,7 +8998,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n    \"hr\": 99,\n    \"id_profile\": 2,\n    \"url\": \"{{$randomUrl}}\",\n    \"status\": false,\n    \"encryption_type\": 1,\n    \"epg_source\": \"do \"\n}",
+													"raw": "{\n    \"hr\": 76,\n    \"id_profile\": 1,\n    \"url\": \"{{$randomUrl}}\",\n    \"status\": true,\n    \"encryption_type\": 1\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -8964,319 +9266,27 @@
 											]
 										},
 										{
-											"name": "Create URL of Channel.",
-											"request": {
-												"auth": {
-													"type": "bearer",
-													"bearer": [
-														{
-															"key": "token",
-															"value": "<Bearer Token>",
-															"type": "string"
-														}
-													]
-												},
-												"method": "POST",
-												"header": [
-													{
-														"key": "Content-Type",
-														"value": "application/json"
-													}
-												],
-												"body": {
-													"mode": "raw",
-													"raw": "{\n    \"hr\": 32459941,\n    \"id_profile\": 79577693,\n    \"url\": \"officia quis nostrud proi\",\n    \"status\": false,\n    \"encryption_type\": -54396683,\n    \"epg_source\": \"do \"\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{baseUrl}}/api/channel/:channelId/url",
-													"host": [
-														"{{baseUrl}}"
-													],
-													"path": [
-														"api",
-														"channel",
-														":channelId",
-														"url"
-													],
-													"variable": [
-														{
-															"key": "protocol",
-															"value": "{{protocol}}",
-															"description": " (This can only be one of http,https)"
-														},
-														{
-															"key": "environment",
-															"value": "{{environment}}"
-														},
-														{
-															"key": "channelId",
-															"value": "-43192755",
-															"description": "(Required) Id Channel"
-														}
-													]
-												}
-											},
-											"response": [
-												{
-													"name": "Return URL of Channel data.",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"description": "Added as a part of security scheme: bearer",
-																"key": "Authorization",
-																"value": "Bearer <token>"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n    \"hr\": 32459941,\n    \"id_profile\": 79577693,\n    \"url\": \"officia quis nostrud proi\",\n    \"status\": false,\n    \"encryption_type\": -54396683,\n    \"epg_source\": \"do \"\n}",
-															"options": {
-																"raw": {
-																	"language": "json"
-																}
-															}
-														},
-														"url": {
-															"raw": "{{baseUrl}}/api/channel/:channelId/url",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"api",
-																"channel",
-																":channelId",
-																"url"
-															],
-															"variable": [
-																{
-																	"key": "protocol",
-																	"value": "{{protocol}}",
-																	"description": " (This can only be one of http,https)"
-																},
-																{
-																	"key": "environment",
-																	"value": "{{environment}}"
-																},
-																{
-																	"key": "channelId",
-																	"value": "-43192755",
-																	"description": "(Required) Id Channel"
-																}
-															]
-														}
-													},
-													"status": "OK",
-													"code": 200,
-													"_postman_previewlanguage": "json",
-													"header": [
-														{
-															"key": "Content-Type",
-															"value": "application/json"
-														}
-													],
-													"cookie": [],
-													"body": "{\n \"id_channel\": 19851085,\n \"hr\": -83694244,\n \"url\": \"reprehenderit fugiat\",\n \"status\": false,\n \"id_profile\": -39209289,\n \"profile\": {\n  \"id\": 84784318,\n  \"title\": \"nisi minim\"\n },\n \"encryption\": {\n  \"id\": -89668851,\n  \"title\": \"laboris Lorem velit ut commodo\"\n }\n}"
-												},
-												{
-													"name": "Returned when bad request",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"description": "Added as a part of security scheme: bearer",
-																"key": "Authorization",
-																"value": "Bearer <token>"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n    \"hr\": 32459941,\n    \"id_profile\": 79577693,\n    \"url\": \"officia quis nostrud proi\",\n    \"status\": false,\n    \"encryption_type\": -54396683,\n    \"epg_source\": \"do \"\n}",
-															"options": {
-																"raw": {
-																	"language": "json"
-																}
-															}
-														},
-														"url": {
-															"raw": "{{baseUrl}}/api/channel/:channelId/url",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"api",
-																"channel",
-																":channelId",
-																"url"
-															],
-															"variable": [
-																{
-																	"key": "protocol",
-																	"value": "{{protocol}}",
-																	"description": " (This can only be one of http,https)"
-																},
-																{
-																	"key": "environment",
-																	"value": "{{environment}}"
-																},
-																{
-																	"key": "channelId",
-																	"value": "-43192755",
-																	"description": "(Required) Id Channel"
-																}
-															]
-														}
-													},
-													"status": "Bad Request",
-													"code": 400,
-													"_postman_previewlanguage": "json",
-													"header": [
-														{
-															"key": "Content-Type",
-															"value": "application/json"
-														}
-													],
-													"cookie": [],
-													"body": "{\n \"type\": \"Validation\",\n \"title\": \"Bad Request\",\n \"messages\": {\n  \"propertyPath\": \"eiusmod reprehenderit et fugiat\",\n  \"message\": \"mollit velit laboris reprehenderit adipisicing\"\n }\n}"
-												},
-												{
-													"name": "Unauthorized",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"description": "Added as a part of security scheme: bearer",
-																"key": "Authorization",
-																"value": "Bearer <token>"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n    \"hr\": 32459941,\n    \"id_profile\": 79577693,\n    \"url\": \"officia quis nostrud proi\",\n    \"status\": false,\n    \"encryption_type\": -54396683,\n    \"epg_source\": \"do \"\n}",
-															"options": {
-																"raw": {
-																	"language": "json"
-																}
-															}
-														},
-														"url": {
-															"raw": "{{baseUrl}}/api/channel/:channelId/url",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"api",
-																"channel",
-																":channelId",
-																"url"
-															],
-															"variable": [
-																{
-																	"key": "protocol",
-																	"value": "{{protocol}}",
-																	"description": " (This can only be one of http,https)"
-																},
-																{
-																	"key": "environment",
-																	"value": "{{environment}}"
-																},
-																{
-																	"key": "channelId",
-																	"value": "-43192755",
-																	"description": "(Required) Id Channel"
-																}
-															]
-														}
-													},
-													"status": "Unauthorized",
-													"code": 401,
-													"_postman_previewlanguage": "json",
-													"header": [
-														{
-															"key": "Content-Type",
-															"value": "application/json"
-														}
-													],
-													"cookie": [],
-													"body": "{\n \"code\": 401,\n \"message\": \"Expired JWT Token\"\n}"
-												},
-												{
-													"name": "Access Denied",
-													"originalRequest": {
-														"method": "POST",
-														"header": [
-															{
-																"description": "Added as a part of security scheme: bearer",
-																"key": "Authorization",
-																"value": "Bearer <token>"
-															}
-														],
-														"body": {
-															"mode": "raw",
-															"raw": "{\n    \"hr\": 32459941,\n    \"id_profile\": 79577693,\n    \"url\": \"officia quis nostrud proi\",\n    \"status\": false,\n    \"encryption_type\": -54396683,\n    \"epg_source\": \"do \"\n}",
-															"options": {
-																"raw": {
-																	"language": "json"
-																}
-															}
-														},
-														"url": {
-															"raw": "{{baseUrl}}/api/channel/:channelId/url",
-															"host": [
-																"{{baseUrl}}"
-															],
-															"path": [
-																"api",
-																"channel",
-																":channelId",
-																"url"
-															],
-															"variable": [
-																{
-																	"key": "protocol",
-																	"value": "{{protocol}}",
-																	"description": " (This can only be one of http,https)"
-																},
-																{
-																	"key": "environment",
-																	"value": "{{environment}}"
-																},
-																{
-																	"key": "channelId",
-																	"value": "-43192755",
-																	"description": "(Required) Id Channel"
-																}
-															]
-														}
-													},
-													"status": "Forbidden",
-													"code": 403,
-													"_postman_previewlanguage": "json",
-													"header": [
-														{
-															"key": "Content-Type",
-															"value": "application/json"
-														}
-													],
-													"cookie": [],
-													"body": "{\n \"code\": 403,\n \"message\": \"Access Denied.\"\n}"
-												}
-											]
-										},
-										{
 											"name": "Delete URL of Channel.",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"Status code is 204\", function () {",
+															"    pm.response.to.have.status(204);",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
 											"request": {
 												"auth": {
 													"type": "bearer",
 													"bearer": [
 														{
 															"key": "token",
-															"value": "<Bearer Token>",
+															"value": "{{TOKEN}}",
 															"type": "string"
 														}
 													]
@@ -9300,27 +9310,18 @@
 													],
 													"variable": [
 														{
-															"key": "protocol",
-															"value": "{{protocol}}",
-															"description": " (This can only be one of http,https)"
-														},
-														{
-															"key": "environment",
-															"value": "{{environment}}"
-														},
-														{
 															"key": "channelId",
-															"value": "-43192755",
+															"value": "{{channels_id}}",
 															"description": "(Required) Id Channel"
 														},
 														{
 															"key": "offset",
-															"value": "-43192755",
+															"value": "76",
 															"description": "(Required) offset in hours"
 														},
 														{
 															"key": "profileId",
-															"value": "-43192755",
+															"value": "1",
 															"description": "(Required) Id Profile"
 														}
 													]
